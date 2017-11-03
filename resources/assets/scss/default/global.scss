@@ -1,0 +1,192 @@
+html{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+div{
+	outline:none;
+}
+
+
+body{
+	letter-spacing: 1px;
+	font-family: Noto Sans TC, sans-serif;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	display: flex;
+	flex-direction: column;
+	font-size: 100%;
+	min-height: 100%;
+	-webkit-overflow-scrolling: touch;
+	z-index:0;
+	line-height:$line-height1;
+}
+
+
+#app{
+	width: 100%;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+a{
+	font-family: Noto Sans TC, sans-serif;
+	font-weight: 500;
+}
+
+
+h1,h2,h3,h4,h5{
+	font-family: Noto Sans TC, sans-serif;
+	letter-spacing: 4px;
+	font-weight: 500;
+}
+
+
+ul,li,ol{
+	font-family: Noto Sans TC, sans-serif;
+	list-style:none;
+	float: left;
+	font-weight: 500;
+}
+
+html, body, div, dl, dt, dd, ul, p {
+	padding: 0;
+	margin: 0;
+}
+
+img {
+	max-width: 100%;
+	width:100%;
+	border: 0px
+}
+
+a{
+	cursor: pointer;
+}
+
+textarea{
+	resize:none
+}
+
+
+a,textarea,textarea:visited,textarea:hover,textarea:active,input,input:link,input:visited,input:hover,input:active,img,a:link,a:visited,a:hover,a:active{
+	outline:none;
+	border: 0px;
+	text-decoration:none;
+}
+
+.noborder{
+	border:0px !important;
+}
+
+input{
+	width:100%;
+}
+
+::-moz-focus-inner{
+	outline:none;
+}
+
+*:focus {
+	outline: 0;
+	outline: none;
+}
+
+div, article, section{
+	position:relative;
+	width:100%;
+	float:left;
+}
+
+.mobile {
+	display: none !important;
+}
+
+.borderbox{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.nowrap{
+	white-space:nowrap !important;
+}
+
+.hide{
+	opacity: 0;
+}
+
+.display-none{
+	display: none !important;
+}
+
+.display-block{
+	display: block !important;
+}
+
+.display-flex{
+	display: flex !important;
+}
+
+
+
+.modalBox.origin{
+	position: fixed;
+	height: 100vh;
+	background: $modal-background-color;
+	z-index: 5;
+	display:none;
+	align-items:center;
+	justify-content:center;
+
+	&.active{
+		display:flex;
+	}
+
+	.box{
+		background: $background-color2;
+		display:flex;
+		position: absolute;
+		z-index: 1;
+		height: 100%;
+		width: 40%;
+		width: 765px;
+		height:$modal-box-height;
+		margin: 0% auto;
+	}
+
+}
+
+
+@media screen and (max-width: 768px){
+	.pc {
+		display: none !important;
+	}
+
+	.mobile {
+		display: block !important;
+	}
+
+	.modalBox.origin{
+		width: 100vw;
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+		&.active{
+			display:block;
+		}
+		.box{
+			width: 100vw;
+			height: 100%;
+			min-height:100%;
+			display: block;
+		}
+
+	}
+
+}

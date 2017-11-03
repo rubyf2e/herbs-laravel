@@ -1,0 +1,57 @@
+.sidebar{
+	position: fixed;
+	right: 20px;
+	width: 3%;
+	height: 0;
+	top: 50%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	.circleBox{
+		.circle{
+			padding: 20% 0;
+			
+			&:hover{
+
+				a{
+					div{
+						animation: shake 500ms linear 0s infinite alternate;
+					}
+				}
+			}
+
+			&.active{
+				a{
+					div{
+						transform:scale(1.5,1.5);
+						transition:all 250ms;
+					}
+				}
+			}
+
+			a{
+				div{
+					float: right;
+					box-shadow: 1px 2px 4px rgba(20%,20%,40%,0.8);
+					width: 25px;
+					height: 25px;
+					background: $background-color2;
+					border-radius: 50%;
+					transform:scale(1.1);
+				}
+			}
+
+
+		}
+	}
+}
+
+
+
+
+@media screen and (max-width: $ipad-max-width) {
+	.sidebar{
+		display: none;
+	}
+}

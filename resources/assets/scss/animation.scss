@@ -1,0 +1,11 @@
+@keyframes shake{
+  0%{
+    transform:scale(2,2) rotate(-11deg);
+  }
+  100%{
+    transform:scale(2,2) rotate(11deg);
+  }
+}
+
+
+

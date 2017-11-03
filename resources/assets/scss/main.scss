@@ -1,0 +1,32 @@
+/*字體*/
+@import "node_modules/mathsass/dist/math";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+/*reset css*/
+@import '../../../node_modules/normalize.css/normalize';
+@import '../../../node_modules/sanitize.css/sanitize';
+@import './default/reset';
+
+/*animate css*/
+@import '../../../node_modules/animate.css/animate';
+@import './animation';
+
+/*slide*/
+@import '../../../node_modules/swiper/dist/css/swiper.css';
+
+/*字元集*/
+@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+/*變數*/
+@import './variable';
+
+
+/*共用基本css*/
+@import './default/main';
+
+/*主題專用*/
+@import './global';
+@import './template';
+@import './components/main';
+
+

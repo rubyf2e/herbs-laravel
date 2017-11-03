@@ -1,0 +1,102 @@
+$background-color1: #5566aa;
+$background-color2: #FFFFFF;
+$background-color3: #0F2540;
+$background-color4: #F5F5F5;
+$background-color5: #00AA90;
+$background-color6: #5566aa;
+$background-color7: #FFEEE4;
+$background-color8: rgba(85, 102, 170, 0.79);
+
+
+$background-color10: #e8e8e8;
+
+
+
+$scrollbar-color:	color-stop(0.44, rgb(179,38,47)),
+color-stop(0.72, rgb(179,38,47)),
+color-stop(0.86, rgb(179,38,47));
+
+$scrollbar-color-2:	color-stop(0.44, rgb(240,240,240)),
+color-stop(0.72, rgb(240,240,240)),
+color-stop(0.86, rgb(240,240,240));
+
+$modal-background-color:rgba(0, 0, 0 ,0.8);
+
+$font-color1: #2B8578;
+$font-color2: #3f3f3f;
+$font-color3: #FFFFFF;
+$font-color4: #3d3a3a;
+$font-color5: #9a9393;
+$font-color11: #3e3e3e;
+$font-color12: #a4a4a4;
+$font-color16: #d0d0d0;
+$font-color17: #5a5a5a;
+$font-color18: #cecece;
+
+
+
+$font1:15px;
+$font2:14px;
+$font3:28px;
+$font4:20px;
+$font5:22px;
+$font6:16px;
+$font7:18px;
+$font8:13px;
+$font9:17px;
+$font10:30px;
+$font11:19px;
+
+$line-height1: 23px;
+
+$memuCloseWidth:25px;
+$memuCloseHeight:2.5px;
+$memuCloseTop: 5.5px;
+
+$header-height:82px;
+$navbar-top:25px;
+
+$footer-height:40px;
+
+/*media size */
+
+$ipad-max-width:768px;
+$pc-min-width:769px;
+
+
+/*default*/
+
+/*邊線*/
+$global-line-border:4px solid $background-color6;
+
+
+/*選單*/
+$navbar-logo-width:7%;
+$navbar-ul-width:38%;
+$mobile-navbar-line-height:44px;
+
+/*漢堡*/
+$Hamburger-width:1.7rem;
+$Hamburger-height:1.8rem;
+$Hamburger-margin:1rem;
+$Hamburger-color:$background-color2;
+$Hamburger-span-height:0.2rem;
+$Hamburger-span-top:0.6rem;
+
+
+
+/*footer color*/
+$footer-background:$background-color3;
+$footer-height:50px;
+$footer-mobile-height:50px;
+
+
+/*modal close button*/
+$modal-close-width:1.5rem;
+$modal-box-height: 700px;
+
+/*地圖*/
+$map-container-height:680px;
+$tab-container-height:$map-container-height * 0.69;
+
+$calc-3: calc(100%/ 3);

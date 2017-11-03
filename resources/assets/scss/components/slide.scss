@@ -1,0 +1,23 @@
+.container.slide{
+	border-bottom: $global-line-border;
+	.swiper-container{
+		.swiper-slide{
+			height:100vh;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+		.swiper-pagination-bullet{
+			background: $background-color2;
+			opacity: 0.5;
+			&.swiper-pagination-bullet-active{
+				opacity: 1;
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: $ipad-max-width) {
+
+}

@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('maps', 'MapsController@index');
+Route::get('sliders', 'SlidersController@index');
+Route::get('sidebars', 'SidebarsController@index');
+Route::get('details', 'DetailsController@index');

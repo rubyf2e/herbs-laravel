@@ -1,0 +1,108 @@
+@import './tab';
+
+article .container.map{
+	padding: 0% 0 0 14.5%;
+	.left-box{
+		padding: 2% 4% 0% 4%;
+		width:42%;
+		h1{
+			font-size:$font3;
+			color:$font-color1;
+			font-weight: 500;
+		}
+
+	}
+
+	.right-box{
+		float: right;
+		width:58%;
+		.map{
+			height: $map-container-height;
+			overflow: scroll;
+		}
+
+		h1{
+			font-size:$font6;
+			color:$font-color1;	
+			border-bottom: 2px solid $font-color1;	
+		}
+
+		.memo-box{
+			padding: 2% 0 0 0;
+			.memo{
+				font-weight: 400;
+				font-size:$font2;
+				color:$font-color17;
+				padding: 0 4% 1% 0;
+				&.color{
+					color:$font-color5;
+					span{
+						white-space:nowrap;
+						padding: 0 4% 0 0;
+					}
+				}
+
+			}
+
+		}
+
+
+	}
+
+}
+
+
+$map-media1:1300px;
+$map-media2:1000px;
+$map-media3:800px;
+
+
+@media screen and  (min-width: $ipad-max-width) and (max-width: $map-media1) {
+	article .container.map{
+		.left-box{
+			width:50%;
+		}
+
+		.right-box{
+			width:50%;
+		}
+	}
+
+}
+
+@media screen and  (min-width: $ipad-max-width) and (max-width: $map-media2) {
+	article .container.map{
+		padding: 0% 0 0 5%;
+		.left-box{
+		}
+
+		.right-box{
+			.map{
+				height: 550px;
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: $ipad-max-width) {
+	article .container.map{
+		padding: 0% 0%;
+		.left-box{
+			padding: 5%;
+			width:100%;
+			h1{
+				margin: 6% 0;
+			}
+		}
+
+		.right-box{
+			width:100%;
+			.map{
+				height: 400px;
+				overflow: scroll;
+			}
+		}
+	}
+
+}
