@@ -6598,6 +6598,11 @@ footer .footer .container {
   z-index: 10;
   width: 0;
   left: 6%; }
+  .mobile-nav .settingClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0; }
   .mobile-nav .menu {
     position: absolute;
     left: 8%;
@@ -6649,7 +6654,7 @@ footer .footer .container {
   margin-top: -27.5px; }
 
 .menu-item img {
-  width: 100%; }
+  width: 0%; }
 
 .menu-item:nth-child(3) {
   -webkit-transition-duration: 70ms;
@@ -6715,6 +6720,8 @@ footer .footer .container {
   background: #ff4081;
   -webkit-transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
           transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33); }
+  .menu-open:checked ~ .menu-item img {
+    width: 100%; }
   .menu-open:checked ~ .menu-item:nth-child(3) {
     -webkit-transition-duration: 160ms;
             transition-duration: 160ms;

@@ -53,7 +53,7 @@ export default {
         self.setMove  = setInterval(self.move, 10);
         self.setMove2 = setInterval(self.move2, 10);
       });
-     }, 200)
+     }, 1000)
 
   },
 

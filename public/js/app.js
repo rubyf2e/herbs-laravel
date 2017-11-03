@@ -21794,28 +21794,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'swiper-slide',
-  data: function data() {
+  data: function () {
     return {
       slideClass: 'swiper-slide'
     };
   },
-  ready: function ready() {
+  ready: function () {
     this.update();
   },
-  mounted: function mounted() {
+  mounted: function () {
     this.update();
     if (this.$parent.options.slideClass) {
       this.slideClass = this.$parent.options.slideClass;
     }
   },
-  updated: function updated() {
+  updated: function () {
     this.update();
   },
-  attached: function attached() {
+  attached: function () {
     this.update();
   },
   methods: {
-    update: function update() {
+    update: function () {
       if (this.$parent && this.$parent.swiper && this.$parent.swiper.update) {
         this.$parent.swiper.update(true);
         if (this.$parent.options.loop) {
@@ -21853,7 +21853,7 @@ if (browser) window.Swiper = __webpack_require__(205);
   props: {
     options: {
       type: Object,
-      default: function _default() {
+      default: function () {
         return {
           autoplay: 3500
         };
@@ -21861,24 +21861,24 @@ if (browser) window.Swiper = __webpack_require__(205);
     },
     notNextTick: {
       type: Boolean,
-      default: function _default() {
+      default: function () {
         return false;
       }
     }
   },
-  data: function data() {
+  data: function () {
     return {
       defaultSwiperClasses: {
         wrapperClass: 'swiper-wrapper'
       }
     };
   },
-  ready: function ready() {
+  ready: function () {
     if (!this.swiper && browser) {
       this.swiper = new Swiper(this.$el, this.options);
     }
   },
-  mounted: function mounted() {
+  mounted: function () {
     var self = this;
     var mount = function () {
       if (!self.swiper && browser) {
@@ -21892,19 +21892,19 @@ if (browser) window.Swiper = __webpack_require__(205);
             }
           }
         }
-        var mountInstance = function mountInstance() {
+        var mountInstance = function () {
           self.swiper = new Swiper(self.$el, self.options);
         };
         setClassName ? self.$nextTick(mountInstance) : mountInstance();
       }
     }(this.options.notNextTick || this.notNextTick) ? mount() : this.$nextTick(mount);
   },
-  updated: function updated() {
+  updated: function () {
     if (this.swiper) {
       this.swiper.update();
     }
   },
-  beforeDestroy: function beforeDestroy() {
+  beforeDestroy: function () {
     if (this.swiper) {
       this.swiper.destroy();
       delete this.swiper;
@@ -21957,42 +21957,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'mobile-memu',
-  data: function data() {
+  data() {
     return {
       navState: false,
       settingStyle: 'rotate(0 140 105)',
       settingDeg: 0,
-      menuIcon: this.$conf.PHOTO_URL + 'images/svg/013-settings.svg',
       list: []
     };
   },
-  created: function created() {
-    var _this = this;
-
-    this.$bus.$on('navbar-memu', function (value) {
-      _this.list = value;
+  created() {
+    this.$bus.$on('navbar-memu', value => {
+      this.list = value;
     });
   },
-  mounted: function mounted() {
+  mounted() {
     setInterval(this.run, 50);
   },
-
-  watch: {
-    navState: function navState(value) {
-      if (value === false) {
-        this.menuIcon = this.$conf.PHOTO_URL + 'images/svg/013-settings.svg';
-      } else {
-        this.menuIcon = this.$conf.PHOTO_URL + 'images/svg/013-close.svg';
-      }
-    }
-  },
+  watch: {},
   methods: {
-    run: function run() {
+    run() {
       if ($(window).width() < 768) {
         this.settingDeg++;
         this.settingStyle = 'rotate(' + this.settingDeg + '  256 256)';
@@ -22000,17 +22040,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.runtarget();
       }
     },
-    runtarget: function runtarget() {
-      var target = document.getElementById("setting").contentDocument;
-      var settingrun = target.querySelectorAll(".settingrun");
+    runtarget() {
+      var settingrun = document.querySelectorAll(".settingrun");
       for (var i = 0; i < settingrun.length; i++) {
         settingrun[i].setAttribute('transform', this.settingStyle);
       }
     },
-    toggleCheck: function toggleCheck() {
+    toggleCheck() {
       this.navState = !this.navState;
     },
-    getElementTop: function getElementTop(element) {
+    getElementTop(element) {
       var navbarheight = 0;
       var actualTop = element.offsetTop;
       var current = element.offsetParent;
@@ -22020,12 +22059,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       return actualTop - navbarheight;
     },
-    goAnchor: function goAnchor(target) {
+    goAnchor(target) {
       var distance = this.getElementTop(document.getElementById(target));
       $('#app').animate({ scrollTop: distance }, 800);
     }
   },
-  render: function render() {
+  render() {
     return true;
   }
 });
@@ -22053,7 +22092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
+  data() {
     return {
       now: 0,
       target: '',
@@ -22061,16 +22100,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       show: false
     };
   },
-
-  mounted: function mounted() {
-    var self = this;
+  mounted: function () {
+    const self = this;
     document.getElementById('app').addEventListener('scroll', this.handleScroll);
     $(window).resize(function () {
       self.listUpdate();
     });
   },
   watch: {
-    now: function now(value) {
+    now: function (value) {
       this.show = value >= this.getElementTop(document.getElementById('detail')) * 0.5 ? true : false;
 
       for (var i = this.list.length - 1; i > -1; i--) {
@@ -22083,29 +22121,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    fetchApi: function fetchApi() {
-      var _this = this;
-
+    fetchApi() {
       var self = this;
-      this.$http.get(self.$conf.SIDEBAR_API).then(function (response) {
-        _this.list = JSON.parse(response.data.list);
-        _this.$bus.$emit('navbar-memu', _this.list);
-      }, function (response) {});
+      this.$http.get(self.$conf.SIDEBAR_API).then(response => {
+        this.list = response.data;
+        this.$bus.$emit('navbar-memu', this.list);
+      }, response => {});
     },
-    handleScroll: function handleScroll() {
+    handleScroll() {
       this.listUpdate();
       this.now = document.getElementById('app').scrollTop;
     },
-    listUpdate: function listUpdate() {
+    listUpdate() {
       for (var i = 0; i < this.list.length; i++) {
         this.list[i].distance = this.getElementTop(document.getElementById(this.list[i].url));
       }
     },
-    goAnchor: function goAnchor(target) {
+    goAnchor(target) {
       var distance = this.getElementTop(document.getElementById(target));
       $('#app').animate({ scrollTop: distance }, 800);
     },
-    getElementTop: function getElementTop(element) {
+    getElementTop(element) {
       var navbarheight = 0;
       var actualTop = element.offsetTop;
       var current = element.offsetParent;
@@ -22116,10 +22152,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return actualTop - navbarheight * 2;
     }
   },
-  created: function created() {
+  created() {
     this.fetchApi();
   },
-  destroyed: function destroyed() {
+  destroyed() {
     document.getElementById('app').removeEventListener('scroll', this.handleScroll);
   }
 });
@@ -22142,7 +22178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'sun',
-  data: function data() {
+  data() {
     return {
       target: null,
       moveType: 1,
@@ -22161,20 +22197,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       setMove2: null
     };
   },
-  created: function created() {},
-
+  created() {},
   watch: {},
-  mounted: function mounted() {
-    var _this = this;
-
-    var self = this;
-    setTimeout(function () {
-      _this.target = document.getElementById("cloud").contentDocument;
-      var svg = _this.target.querySelectorAll('path');
+  mounted() {
+    const self = this;
+    setTimeout(() => {
+      this.target = document.getElementById("cloud").contentDocument;
+      var svg = this.target.querySelectorAll('path');
       var $svg = $(svg);
       var moveStyle = 'translate(125, 0) scale(0.5, 0.5)';
-      _this.moveTarget(".cloud1", moveStyle);
-      _this.moveTarget(".cloud2", moveStyle);
+      this.moveTarget(".cloud1", moveStyle);
+      this.moveTarget(".cloud2", moveStyle);
       self.setMove = setInterval(self.move, 10);
       self.setMove2 = setInterval(self.move2, 10);
 
@@ -22185,12 +22218,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         self.setMove = setInterval(self.move, 10);
         self.setMove2 = setInterval(self.move2, 10);
       });
-    }, 200);
+    }, 1000);
   },
 
-
   methods: {
-    move: function move() {
+
+    move() {
       if (this.moveNum === this.moveRangeUp) {
         this.moveType = 1;
       } else if (this.moveNum === this.moveRangeDown) {
@@ -22207,7 +22240,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.moveStyle = 'translate(' + this.moveNum + ', 0) scale(0.5, 0.5)';
       this.moveTarget(".cloud1", this.moveStyle);
     },
-    move2: function move2() {
+    move2() {
       if (this.move2Num === this.move2RangeUp) {
         this.move2Type = -1;
       } else if (this.move2Num === this.move2RangeDown) {
@@ -22224,7 +22257,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.move2Style = 'translate(' + this.move2Num + ', 0) scale(0.5, 0.5)';
       this.moveTarget(".cloud2", this.move2Style);
     },
-    moveTarget: function moveTarget(classTarget, value) {
+    moveTarget(classTarget, value) {
       var settingrun = this.target.querySelectorAll(classTarget);
       for (var i = 0; i < settingrun.length; i++) {
         settingrun[i].setAttribute('transform', value);
@@ -22269,40 +22302,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'detail',
-  data: function data() {
+  data() {
     return {
       visible: false,
       tabSelected: 0,
       list: []
     };
   },
-  created: function created() {
-    var _this = this;
-
+  created() {
     this.fetchApi();
-    this.$bus.$on('detail-modal', function (detailModal) {
-      _this.visible = detailModal.visible;
-      _this.tabSelected = detailModal.tabSelected;
+    this.$bus.$on('detail-modal', detailModal => {
+      this.visible = detailModal.visible;
+      this.tabSelected = detailModal.tabSelected;
     });
   },
-
   methods: {
-    fetchApi: function fetchApi() {
-      var _this2 = this;
-
+    fetchApi() {
       var self = this;
-      this.$http.get(self.$conf.DETAIL_API).then(function (response) {
-        _this2.list = response.data;
-      }, function (response) {});
+      this.$http.get(self.$conf.DETAIL_API).then(response => {
+        this.list = response.data;
+      }, response => {});
     },
-
-    tabSelect: function tabSelect(id) {
+    tabSelect: function (id) {
       this.tabSelected = id - 1;
       this.toggle();
     },
-    toggle: function toggle(event) {
+    toggle: function (event) {
       this.visible = !this.visible;
-      var detailModal = {
+      const detailModal = {
         visible: this.visible,
         tabSelected: this.tabSelected,
         list: this.list
@@ -22345,7 +22372,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   name: 'slides',
-  data: function data() {
+  data() {
     return {
       fadeOut: false,
       startIndex: 0,
@@ -22356,34 +22383,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       list: []
     };
   },
-  created: function created() {
-    var _this = this;
-
-    this.$bus.$on('detail-modal', function (detailModal) {
-      _this.visible = detailModal.visible;
-      _this.tabSelected = detailModal.tabSelected;
-      _this.list = detailModal.list[_this.tabSelected].slidesrc;
+  created() {
+    this.$bus.$on('detail-modal', detailModal => {
+      this.visible = detailModal.visible;
+      this.tabSelected = detailModal.tabSelected;
+      this.list = detailModal.list[this.tabSelected].slidesrc;
     });
   },
-
   watch: {
-    tabSelected: function tabSelected(value) {
+    tabSelected: function (value) {
       this.startIndex = value;
     }
   },
-  mounted: function mounted() {},
-
+  mounted() {},
 
   methods: {
-    toggle: function toggle(event) {
-      var self = this;
+    toggle: function (event) {
+      const self = this;
       setTimeout(function () {
         self.fadeOut = true;
         setTimeout(function () {
           self.fadeOut = false;
           self.visible = false;
 
-          var detailModal = {
+          const detailModal = {
             visible: self.visible,
             tabSelected: self.tabSelected,
             list: self.list
@@ -22394,7 +22417,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   computed: {},
-  beforeDestroy: function beforeDestroy() {
+  beforeDestroy: function () {
     this.$bus.$off('detail-modal');
   }
 });
@@ -22420,22 +22443,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'google-map',
   props: ['name'],
-  created: function created() {
-    var _this = this;
-
-    this.$bus.$on('google-marker-position', function (position) {
-      _this.center = position;
+  created() {
+    this.$bus.$on('google-marker-position', position => {
+      this.center = position;
     });
 
-    this.$bus.$on('google-marker-detail', function (detail) {
-      _this.detail = detail;
+    this.$bus.$on('google-marker-detail', detail => {
+      this.detail = detail;
     });
 
-    this.$bus.$on('google-marker', function (list) {
-      _this.markerCoordinates = list;
+    this.$bus.$on('google-marker', list => {
+      this.markerCoordinates = list;
     });
   },
-  data: function data() {
+  data() {
     return {
       image: {
         url: this.$conf.PHOTO_URL + 'images/svg/pin.svg',
@@ -22475,16 +22496,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-
-  mounted: function mounted() {},
+  mounted: function () {},
 
   watch: {
-    markerCoordinates: function markerCoordinates(value) {
-      var _this2 = this;
-
-      var self = this;
-      var element = document.getElementById(this.mapName);
-      var options = {
+    markerCoordinates: function (value) {
+      const self = this;
+      const element = document.getElementById(this.mapName);
+      const options = {
         zoom: 5,
         center: this.center,
         disableDefaultUI: true,
@@ -22498,43 +22516,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       };
 
       this.map = new google.maps.Map(element, options);
-      this.markerCoordinates.forEach(function (item, key) {
-        var self = _this2;
-        _this2.marker = new google.maps.Marker({
+      this.markerCoordinates.forEach((item, key) => {
+        const self = this;
+        this.marker = new google.maps.Marker({
           position: JSON.parse(item.position),
-          map: _this2.map,
-          icon: _this2.image,
+          map: this.map,
+          icon: this.image,
           optimized: false
         });
 
-        _this2.marker.setMap(_this2.map);
+        this.marker.setMap(this.map);
 
-        _this2.content = '<div>' + '<h1>' + item.name + '</h1>' + '<div class="memo-box"><div class="memo"><span>' + item.memo + '</span></div></div></div>' + '</div>';
+        this.content = '<div>' + '<h1>' + item.name + '</h1>' + '<div class="memo-box"><div class="memo"><span>' + item.memo + '</span></div></div></div>' + '</div>';
 
-        _this2.infowindow = new google.maps.InfoWindow({
-          content: _this2.content,
+        this.infowindow = new google.maps.InfoWindow({
+          content: this.content,
           maxWidth: 300
         });
 
         var value = {
-          "marker": _this2.marker,
-          "infowindow": _this2.infowindow
+          "marker": this.marker,
+          "infowindow": this.infowindow
         };
 
-        _this2.markerGroup.push(value);
+        this.markerGroup.push(value);
 
         if (key === 0) {
-          _this2.infowindow.open(_this2.map, _this2.marker);
+          this.infowindow.open(this.map, this.marker);
         }
       });
 
-      this.markerGroup.forEach(function (item) {
+      this.markerGroup.forEach(item => {
         item.marker.addListener('click', function () {
           item.infowindow.open(self.map, item.marker);
         });
       });
     },
-    center: function center(value) {
+    center: function (value) {
       if (this.begin === false) {
         this.markerGroup[0].infowindow.close();
         this.infowindow.close();
@@ -22544,13 +22562,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.map.setCenter(value);
       this.marker.setPosition(value);
     },
-    detail: function detail(value) {
+    detail: function (value) {
       this.infowindow = new google.maps.InfoWindow({
         content: '<div>' + '<h1>' + value.name + '</h1>' + '<div class="memo-box"><div class="memo"><span>' + value.memo + '</span></div></div></div>' + '</div>',
         maxWidth: 300
       });
 
-      var self = this;
+      const self = this;
       this.marker.addListener('click', function () {
         self.closeMap();
         self.infowindow.open(self.map, self.marker);
@@ -22560,14 +22578,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    closeMap: function closeMap() {
-      var self = this;
+    closeMap: function () {
+      const self = this;
       this.markerGroup.forEach(function (item) {
         item.infowindow.close(self.map, item.marker);
       });
     }
   },
-  beforeDestroy: function beforeDestroy() {
+  beforeDestroy: function () {
     this.$bus.$off('google-marker');
   }
 
@@ -22605,7 +22623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'plant',
-  data: function data() {
+  data() {
     return {
       targetSvg: null,
       target: null,
@@ -22627,28 +22645,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       list: []
     };
   },
-  created: function created() {
+  created() {
     this.fetchApi();
   },
-  mounted: function mounted() {
-    var self = this;
-    setTimeout(function () {
+  mounted() {
+    const self = this;
+    setTimeout(() => {
       self.target = document.getElementById("words").contentDocument;
       self.targetSvg = self.target.querySelector("svg");
       self.targetPath = self.targetSvg.querySelectorAll("path");
-      setTimeout(function () {
+      setTimeout(() => {
         self.words();
       }, 100);
-    }, 200);
+    }, 1000);
   },
-
   computed: {
-    swiper: function swiper() {
+    swiper() {
       return this.$refs.sliderSwiper.swiper;
     }
   },
   methods: {
-    fetchApi: function fetchApi() {
+    fetchApi() {
       var xhr = new XMLHttpRequest();
       var self = this;
       xhr.open('GET', self.$conf.SLIDER_API);
@@ -22657,11 +22674,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       };
       xhr.send();
     },
-    getRandom: function getRandom(min, max) {
+    getRandom(min, max) {
       return Math.random() * (max - min) + min;
     },
-    words: function words() {
-      var self = this;
+    words() {
+      const self = this;
 
       for (var i = 0; i < this.targetPath.length; i++) {
         this.targetPath[i].setAttribute('stroke', '#FFFFFF');
@@ -22725,7 +22742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'sun',
-	data: function data() {
+	data() {
 		return {
 			runDeg: 0,
 			moveType: 0,
@@ -22737,30 +22754,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			moveStyle: null
 		};
 	},
-	created: function created() {},
-
+	created() {},
 	watch: {},
-	mounted: function mounted() {
+	mounted() {
 		setInterval(this.run, 50);
 		setInterval(this.move, 20);
 	},
 
-
 	methods: {
-		run: function run() {
+		run() {
 			this.runDeg++;
 			this.runStyle = 'rotate(' + this.runDeg + '  256 256)';
 			this.runDeg = this.runDeg === 360 ? 0 : this.runDeg;
 			this.runTarget();
 		},
-		runTarget: function runTarget() {
+		runTarget() {
 			var target = document.getElementById("sun2").contentDocument;
 			var settingrun = target.querySelectorAll(".settingrun");
 			for (var i = 0; i < settingrun.length; i++) {
 				settingrun[i].setAttribute('transform', this.runStyle);
 			}
 		},
-		move: function move() {
+		move() {
 			if (this.moveNum === this.moveRangeUp) {
 				this.moveType = -1;
 			} else if (this.moveNum === this.moveRangeDown) {
@@ -22777,13 +22792,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.moveStyle = 'translate(0,' + this.moveNum + ')';
 			this.moveTarget();
 		},
-		moveTarget: function moveTarget() {
+		moveTarget() {
 			var target = document.getElementById("sun2").contentDocument;
 			var settingrun = target.querySelectorAll(".mouth");
 			for (var i = 0; i < settingrun.length; i++) {
 				settingrun[i].setAttribute('transform', this.moveStyle);
 			}
 		}
+
 	},
 	computed: {}
 });
@@ -22828,7 +22844,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'tab',
-  data: function data() {
+  data() {
     return {
       tabSelected: 0,
       targetSelected: 0,
@@ -22837,30 +22853,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       list: []
     };
   },
-  created: function created() {
+  created() {
     this.fetchApi();
   },
-
-  mounted: function mounted() {},
+  mounted: function () {},
   watch: {},
   methods: {
-    fetchApi: function fetchApi() {
-      var _this = this;
-
+    fetchApi() {
       var self = this;
-      this.$http.get(self.$conf.TAB_API).then(function (response) {
-        _this.list = response.data;
-        _this.centerPosition = JSON.parse(response.data[0].position);
+      this.$http.get(self.$conf.TAB_API).then(response => {
+        this.list = response.data;
+        this.centerPosition = JSON.parse(response.data[0].position);
 
-        _this.$bus.$emit('google-marker', _this.list);
-        _this.$bus.$emit('google-marker-position', _this.centerPosition);
-      }, function (response) {});
+        this.$bus.$emit('google-marker', this.list);
+        this.$bus.$emit('google-marker-position', this.centerPosition);
+      }, response => {});
     },
-
-    tabSelect: function tabSelect(id) {
+    tabSelect: function (id) {
       this.tabSelected = id;
     },
-    targetSelect: function targetSelect(id, position) {
+    targetSelect: function (id, position) {
       this.targetSelected = id;
       var value = {
         position: JSON.parse(position),
@@ -22887,11 +22899,238 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'trees',
-	data: function data() {
+	data() {
 		return {
 			now: 0,
 			show: false,
@@ -22905,41 +23144,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			tree: null
 		};
 	},
-	created: function created() {},
-	destroyed: function destroyed() {
+	created() {},
+	destroyed() {
 		document.getElementById('app').removeEventListener('scroll', this.handleScroll);
 	},
-
 	watch: {
-		now: function now(value) {
-			this.show = value >= this.getElementTop(document.getElementById('treeBox')) - 800 ? true : false;
-			if (this.show === true) {
-				this.runNum = this.runRangeUp;
+		show: function (value) {
+			if (value === true) {
 				this.play();
 			}
+		},
+		now: function (value) {
+			this.show = value >= this.getElementTop(document.getElementById('treeBox')) - 700 ? true : false;
 		}
 	},
-	mounted: function mounted() {
+	mounted() {
 		document.getElementById('app').addEventListener('scroll', this.handleScroll);
 	},
 
-
 	methods: {
-		play: function play() {
-			var self = this;
-			setTimeout(function () {
+		play() {
+			const self = this;
+			setTimeout(() => {
+				self.runType = -1;
+				self.runNum = self.runRangeUp;
 				self.runStyle = 'scale(0)';
-				self.runTarget(".apple");
+				self.runTarget('.apple');
+				setTimeout(function () {
+					setInterval(self.bigger, 30);
+				}, 3000);
 			}, 100);
-
-			setTimeout(function () {
-				setInterval(self.bigger, 30);
-			}, 3000);
 		},
-		handleScroll: function handleScroll() {
+		handleScroll() {
 			this.now = document.getElementById('app').scrollTop;
 		},
-		getElementTop: function getElementTop(element) {
+		getElementTop(element) {
 			var navbarheight = 0;
 			var actualTop = element.offsetTop;
 			var current = element.offsetParent;
@@ -22949,10 +23188,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 			return actualTop - navbarheight * 2;
 		},
-		bigger: function bigger() {
+		bigger() {
 			if (this.runNum < this.runRangeUp) {
 				this.runType = 1;
-			} else if (this.runNum > this.runRangeDown) {
+			} else if (this.runNum >= this.runRangeDown) {
 				this.runType = 0;
 			}
 
@@ -22964,11 +23203,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			this.runNum = this.runDeg;
 			this.runStyle = 'scale(' + this.runNum + ')';
-			this.runTarget(".apple");
+
+			if (this.runType === 1) {
+				this.runTarget(".apple");
+			}
 		},
-		runTarget: function runTarget(target) {
-			this.target = document.getElementById("treeId").contentDocument;
-			var apple = this.target.querySelectorAll(target);
+		runTarget(target) {
+			var apple = document.querySelectorAll(target);
 			for (var i = 0; i < apple.length; i++) {
 				apple[i].setAttribute('transform-origin', 'center');
 				apple[i].setAttribute('transform', this.runStyle);
@@ -23003,16 +23244,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'footer',
-	data: function data() {
+	data() {
 		return {
 			list: []
 		};
 	},
-	created: function created() {},
-
+	created() {},
 	watch: {},
-	mounted: function mounted() {},
-
+	mounted() {},
 
 	methods: {},
 	computed: {}
@@ -23063,7 +23302,7 @@ if (false) {
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "container detail"
@@ -23078,7 +23317,7 @@ module.exports = { render: function render() {
           left: (key + 1) % 2 == 0, right: (key + 1) % 2 != 0
         },
         on: {
-          "click": function click($event) {
+          "click": function ($event) {
             _vm.tabSelect(item.id);
           }
         }
@@ -23121,7 +23360,7 @@ if (false) {
 /* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "left-box borderbox tab-set"
@@ -23147,7 +23386,7 @@ module.exports = { render: function render() {
           "id": 'tab-box' + item.id
         },
         on: {
-          "click": function click($event) {
+          "click": function ($event) {
             _vm.targetSelect(item.id, item.position);
           }
         }
@@ -23178,7 +23417,7 @@ if (false) {
 /* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "swiper-container"
@@ -23198,7 +23437,7 @@ if (false) {
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "modalBox detail",
@@ -23255,7 +23494,7 @@ if (false) {
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "sun"
@@ -23279,7 +23518,7 @@ if (false) {
 /* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('footer', [_c('div', {
       staticClass: "footer borderbox"
@@ -23307,14 +23546,14 @@ if (false) {
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "tree",
       attrs: {
         "id": "treeBox"
       }
-    }, [_c('object', {
+    }, [_c('svg', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -23322,12 +23561,534 @@ module.exports = { render: function render() {
         expression: "show"
       }],
       staticClass: "treeObject",
+      staticStyle: {
+        "enable-background": "new 0 0 512 512"
+      },
       attrs: {
-        "data": this.$conf.PHOTO_URL + 'images/svg/009-rainbow.svg',
-        "type": "image/svg+xml",
-        "id": "treeId"
+        "version": "1.1",
+        "id": "treeId",
+        "xmlns": "http://www.w3.org/2000/svg",
+        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+        "x": "0px",
+        "y": "0px",
+        "viewBox": "0 0 512 512",
+        "xml:space": "preserve"
       }
-    })]);
+    }, [_c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow1"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#FF977B"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow1Animate",
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow2"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#F95948"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow2Animate",
+        "calcMode": "linear",
+        "dur": "0.7s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "0.7s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow3"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#FF977B"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow3Animate",
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow1Animate.end"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow1Animate.end"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow4"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#AEEF66"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow4Animate",
+        "calcMode": "linear",
+        "dur": "0.7s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow6Animate.end"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "0.7s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow6Animate.end"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow5"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#8EC155"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow5Animate",
+        "calcMode": "linear",
+        "dur": "0.5s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow6Animate.end"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "0.5s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow6Animate.end"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow6"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#AEEF66"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow6Animate",
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "value": "0, 1, 1.3"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow7"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#FFF873"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow7Animate",
+        "calcMode": "linear",
+        "dur": "0.85s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "0.85s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('defs', [_c('linearGradient', {
+      attrs: {
+        "id": "rainbow8"
+      }
+    }, [_c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "#FFF873"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "id": "rainbow8Animate",
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow7Animate.end"
+      }
+    })]), _vm._v(" "), _c('stop', {
+      attrs: {
+        "offset": "0",
+        "stop-color": "transparent"
+      }
+    }, [_c('animate', {
+      attrs: {
+        "calcMode": "linear",
+        "dur": "1s",
+        "attributeName": "offset",
+        "fill": "freeze",
+        "from": "0",
+        "to": "1",
+        "begin": "rainbow7Animate.end"
+      }
+    })])], 1)], 1), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow1",
+      attrs: {
+        "fill": "url(#rainbow1)",
+        "d": "M53.113,355.84c0-51.12,21.798-100.071,59.804-134.299l10.563-9.661l53.074,76.301l-8.451,9.896\n\t\tc-14.061,15.929-21.805,36.443-21.805,57.763v33.115l-5.709,1.816c-28.957,9.211-54.531,22.867-73.957,39.49l-13.518,11.568\n\t\tC53.113,441.828,53.113,355.84,53.113,355.84z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow2",
+      attrs: {
+        "fill": "url(#rainbow2)",
+        "d": "M67.242,355.84c0-51.12,21.798-100.071,59.804-134.299l1.927-1.763l-5.494-7.898l-10.563,9.661\n\t\tC74.91,255.769,53.113,304.72,53.113,355.84v85.989l13.518-11.568c0.2-0.171,0.41-0.337,0.611-0.507V355.84z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow3",
+      attrs: {
+        "fill": "url(#rainbow3)",
+        "d": "M401.072,430.326c-4.15-3.545-8.587-6.971-13.186-10.182c-17.369-12.126-37.819-21.988-60.782-29.312\n\t\tl-5.703-1.819V355.84c0-21.538-7.888-42.215-22.212-58.22l-5.648-6.31l6.494-5.435c10.555-8.834,17.769-21.824,24.747-34.385\n\t\tc1.6-2.883,3.114-5.607,4.705-8.359c1.65-2.849,3.386-5.705,5.065-8.467c2.296-3.78,4.664-7.677,6.88-11.657l4.972-8.93l7.633,6.797\n\t\tc38.479,34.261,60.548,83.454,60.548,134.966v86.032L401.072,430.326z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow4",
+      attrs: {
+        "fill": "url(#rainbow4)",
+        "d": "M341.994,396.087c-4.92-1.905-9.93-3.673-14.891-5.255l-5.703-1.819V355.84\n\t\tc0-21.538-7.889-42.215-22.212-58.22l-5.648-6.31l6.494-5.435c3.259-2.727,6.347-5.968,9.441-9.907l5.964-7.594l6.521,7.123\n\t\tc20.109,21.967,31.184,50.5,31.184,80.343v44.565L341.994,396.087z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow5",
+      attrs: {
+        "fill": "url(#rainbow5)",
+        "d": "M329.698,357.53c0-23.823-7.889-46.695-22.212-64.398l-5.648-6.98l6.494-6.012\n\t\tc3.012-2.787,5.877-6.068,8.736-9.987l-1.628-1.779l-5.964,7.594c-3.093,3.939-6.182,7.18-9.441,9.907l-6.494,5.435l5.648,6.31\n\t\tc14.323,16.005,22.212,36.682,22.212,58.22v33.173l5.703,1.819c0.863,0.275,1.73,0.563,2.595,0.85V357.53z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow6",
+      attrs: {
+        "fill": "url(#rainbow6)",
+        "d": "M114.553,355.84c0-29.525,10.858-57.824,30.576-79.683l12.857-14.201l18.567,26.225l-8.451,9.896\n\t\tc-14.061,15.929-21.805,36.443-21.805,57.763v33.115l-5.709,1.816c-4.926,1.566-9.935,3.332-14.889,5.247l-11.146,4.309\n\t\tC114.553,400.327,114.553,355.84,114.553,355.84z"
+      }
+    }), _vm._v(" "), _c('g', [_c('path', {
+      staticClass: "rainbow rainbow7",
+      attrs: {
+        "fill": "url(#rainbow7)",
+        "d": "M83.833,355.84c0-39.818,16.319-78.746,44.772-106.802l11.519-11.207l16.578,28.168l-8.498,8.352\n\t\t\tc-21.039,22.038-32.626,50.978-32.626,81.489v44.291l-4.731,2.205c-5.12,2.386-10.102,4.937-14.808,7.581l-12.205,6.857V355.84\n\t\t\tH83.833z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "rainbow rainbow8",
+      attrs: {
+        "fill": "url(#rainbow8)",
+        "d": "M371.661,409.991c-4.733-2.658-9.715-5.21-14.808-7.584l-4.732-2.205V355.84\n\t\t\tc0-30.818-11.805-59.981-33.239-82.116l-4.388-4.532l3.26-5.401c2.431-4.027,4.768-8.233,7.028-12.301l5.912-10.619l7.666,7.454\n\t\t\tc28.919,28.12,45.504,67.308,45.504,107.515v61.007L371.661,409.991z"
+      }
+    })]), _vm._v(" "), _c('path', {
+      staticClass: "moon",
+      staticStyle: {
+        "fill": "#FFE44C"
+      },
+      attrs: {
+        "d": "M449.913,76.8c-21.174,0-38.4-17.226-38.4-38.4S428.738,0,449.913,0s38.4,17.226,38.4,38.4\n\t\tS471.087,76.8,449.913,76.8z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "moon",
+      staticStyle: {
+        "fill": "#FFC84D"
+      },
+      attrs: {
+        "d": "M472.448,48.827c-21.174,0-38.4-17.226-38.4-38.4c0-2.497,0.248-4.937,0.706-7.302\n\t\tc-13.656,5.891-23.241,19.483-23.241,35.275c0,21.174,17.226,38.4,38.4,38.4c18.677,0,34.274-13.405,37.695-31.098\n\t\tC482.954,47.709,477.83,48.827,472.448,48.827z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#8BB240"
+      },
+      attrs: {
+        "d": "M216.284,298.841c-16.626,0-30.071-1.373-41.651-8.075c-14.936-8.641-23.725-24.466-32.225-39.77\n\t\tl-0.055-0.1c-1.514-2.728-3.082-5.548-4.644-8.247c-1.622-2.803-3.367-5.673-5.053-8.449c-8.499-13.986-18.133-29.837-18.133-47.582\n\t\tc0-17.747,9.633-33.597,18.132-47.582c1.696-2.79,3.44-5.661,5.052-8.448c1.588-2.745,3.169-5.592,4.698-8.345\n\t\tc8.5-15.306,17.29-31.132,32.227-39.775c11.581-6.7,25.028-8.073,41.654-8.073c3.057,0,6.161,0.043,9.296,0.087\n\t\tc3.065,0.042,6.124,0.063,9.183,0.063c3.06,0,6.118-0.022,9.183-0.063c3.128-0.043,6.224-0.086,9.274-0.086\n\t\tc16.64,0,30.095,1.373,41.675,8.072c14.938,8.643,23.728,24.469,32.229,39.777c1.53,2.754,3.112,5.602,4.697,8.341\n\t\tc1.599,2.764,3.328,5.611,5.001,8.364c8.55,14.069,18.184,29.92,18.184,47.667c0,17.745-9.633,33.596-18.131,47.581\n\t\tc-1.699,2.794-3.442,5.663-5.053,8.449c-1.588,2.745-3.169,5.592-4.698,8.345c-8.5,15.306-17.29,31.132-32.227,39.775\n\t\tc-11.582,6.7-25.028,8.073-41.654,8.073c-3.057,0-6.161-0.043-9.296-0.087c-3.065-0.042-6.132-0.084-9.183-0.084\n\t\ts-6.118,0.042-9.183,0.084c-3.134,0.044-6.237,0.087-9.296,0.087C216.287,298.841,216.285,298.841,216.284,298.841z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#6D961D"
+      },
+      attrs: {
+        "d": "M299.04,253.047c-3.057,0-6.161-0.043-9.296-0.087c-3.065-0.042-6.132-0.084-9.183-0.084\n\t\tc-3.051,0-6.118,0.042-9.183,0.084c-3.134,0.044-6.237,0.087-9.296,0.087c-0.001,0-0.002,0-0.004,0\n\t\tc-16.626,0-30.071-1.373-41.651-8.075c-14.936-8.641-23.725-24.466-32.225-39.77l-0.055-0.1c-1.515-2.728-3.082-5.548-4.644-8.247\n\t\tc-1.622-2.803-3.367-5.673-5.053-8.449c-8.499-13.986-18.133-29.837-18.133-47.582c0-17.747,9.633-33.597,18.132-47.582\n\t\tc1.696-2.79,3.44-5.661,5.052-8.448c1.453-2.511,2.895-5.101,4.301-7.632c-4.664,1.214-9.039,2.916-13.169,5.306\n\t\tc-14.937,8.643-23.727,24.47-32.227,39.775c-1.529,2.753-3.11,5.6-4.698,8.345c-1.613,2.787-3.357,5.658-5.052,8.448\n\t\tc-8.499,13.985-18.132,29.835-18.132,47.582c0,17.745,9.633,33.596,18.133,47.582c1.687,2.776,3.431,5.646,5.053,8.449\n\t\tc1.562,2.699,3.128,5.519,4.644,8.247l0.055,0.1c8.5,15.304,17.289,31.129,32.225,39.77c11.58,6.702,25.026,8.075,41.651,8.075\n\t\tc0.001,0,0.003,0,0.004,0c3.058,0,6.161-0.043,9.296-0.087c3.065-0.042,6.132-0.084,9.183-0.084s6.118,0.042,9.183,0.084\n\t\tc3.134,0.044,6.239,0.087,9.296,0.087c16.626,0,30.072-1.373,41.654-8.073c14.937-8.643,23.727-24.469,32.227-39.775\n\t\tc0.13-0.234,0.266-0.477,0.397-0.713C319.11,252.469,309.735,253.047,299.04,253.047z"
+      }
+    }), _vm._v(" "), _c('g', [_c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M299.385,200.704c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S308.701,200.704,299.385,200.704z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M232.825,128c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S242.141,128,232.825,128z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M232.825,94.208c-9.316,0-16.896,7.58-16.896,16.896S223.508,128,232.825,128\n\t\t\ts16.896-7.58,16.896-16.896S242.141,94.208,232.825,94.208z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M158.073,212.992c-7.058,0-12.8-5.742-12.8-12.8c0-7.058,5.742-12.8,12.8-12.8\n\t\t\tc7.058,0,12.8,5.742,12.8,12.8C170.873,207.25,165.131,212.992,158.073,212.992z"
+      }
+    })]), _vm._v(" "), _c('g', [_c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M310.002,190.086c-9.316,0-16.896-7.58-16.896-16.896c0-1.883,0.324-3.691,0.895-5.383\n\t\t\tc-6.682,2.255-11.512,8.569-11.512,16.001c0,9.316,7.58,16.896,16.896,16.896c7.432,0,13.746-4.831,16.001-11.512\n\t\t\tC313.692,189.764,311.886,190.086,310.002,190.086z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M243.442,117.382c-9.316,0-16.896-7.58-16.896-16.896c0-1.883,0.324-3.69,0.895-5.383\n\t\t\tc-6.682,2.255-11.512,8.569-11.512,16.001c0,9.316,7.58,16.896,16.896,16.896c7.432,0,13.746-4.831,16.001-11.512\n\t\t\tC247.132,117.06,245.326,117.382,243.442,117.382z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M168.69,202.374c-7.058,0-12.8-5.742-12.8-12.8c0-0.685,0.07-1.353,0.173-2.009\n\t\t\tc-6.104,0.969-10.791,6.254-10.791,12.627c0,7.058,5.742,12.8,12.8,12.8c6.373,0,11.657-4.687,12.627-10.791\n\t\t\tC170.043,202.305,169.376,202.374,168.69,202.374z"
+      }
+    })]), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#78A530"
+      },
+      attrs: {
+        "d": "M445.792,500.749c-3.064-30.886-22.689-60.414-55.261-83.145\n\t\tc-34.489-24.069-81.303-39.332-131.819-42.977l-11.304-0.816l-24.361-0.032l-11.245,0.777\n\t\tc-51.086,3.533-98.369,18.903-133.137,43.281c-32.365,22.693-51.872,52.138-54.927,82.911l0,0C23.142,506.774,27.875,512,33.93,512\n\t\th401.671C441.657,512,446.39,506.775,445.792,500.749L445.792,500.749z"
+      }
+    }), _vm._v(" "), _c('g', [_c('path', {
+      staticStyle: {
+        "fill": "#729328"
+      },
+      attrs: {
+        "d": "M74.461,500.748c3.055-30.773,22.562-60.218,54.927-82.911\n\t\t\tc34.224-23.996,80.574-39.255,130.74-43.097c-0.472-0.036-0.942-0.079-1.415-0.113l-11.304-0.816l-24.361-0.032l-11.245,0.777\n\t\t\tc-51.086,3.533-98.369,18.903-133.137,43.281c-32.365,22.693-51.872,52.138-54.927,82.911C23.142,506.774,27.875,512,33.93,512\n\t\t\th50.721C78.596,512,73.863,506.774,74.461,500.748z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#729328"
+      },
+      attrs: {
+        "d": "M156.127,478.72c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S165.442,478.72,156.127,478.72z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#729328"
+      },
+      attrs: {
+        "d": "M307.679,483.84c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S316.994,483.84,307.679,483.84z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#729328"
+      },
+      attrs: {
+        "d": "M243.167,456.192c-12.14,0-22.016-9.876-22.016-22.016s9.876-22.016,22.016-22.016\n\t\t\ts22.016,9.876,22.016,22.016S255.307,456.192,243.167,456.192z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#729328"
+      },
+      attrs: {
+        "d": "M253.219,411.263l-18.096-18.096c-1.397-1.396-3.67-1.363-5.025,0.073L122.473,507.335\n\t\t\tc-0.624,0.661-1.481,1.054-2.389,1.095l-36.811,1.67c-1.282,0.057-2.391,0.808-2.952,1.9h71.85l100.98-95.717\n\t\t\tC254.583,414.926,254.613,412.657,253.219,411.263z"
+      }
+    })]), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#A88D68"
+      },
+      attrs: {
+        "d": "M216.865,413.47l4.56-170.403c0.023-0.83-0.279-1.638-0.839-2.252l-31.022-33.968\n\t\tc-1.036-1.135-1.123-2.846-0.208-4.08l10.562-14.234c1.204-1.622,3.589-1.744,4.951-0.252l12.422,13.602\n\t\tc1.941,2.126,5.485,0.82,5.582-2.057l0.409-12.082c0.029-0.839-0.272-1.655-0.839-2.274l-18.903-20.7\n\t\tc-1.036-1.135-1.123-2.846-0.208-4.08l10.562-14.233c1.204-1.622,3.589-1.744,4.951-0.252l14.429,15.8\n\t\tc1.274,1.395,3.47,1.395,4.743,0l32.133-35.187c1.363-1.492,3.748-1.37,4.951,0.253l10.56,14.236\n\t\tc0.915,1.235,0.828,2.945-0.208,4.08l-37.773,41.362c-0.566,0.62-0.866,1.436-0.839,2.274l0.769,22.721\n\t\tc0.097,2.877,3.64,4.183,5.582,2.057l7.073-7.745c1.362-1.492,3.747-1.37,4.951,0.252l10.565,14.231\n\t\tc0.916,1.235,0.829,2.945-0.207,4.081l-25.67,28.108c-0.562,0.615-0.863,1.426-0.839,2.26l4.624,158.474\n\t\tc0.053,1.809-1.4,3.305-3.21,3.305h-30.404C218.268,416.768,216.816,415.277,216.865,413.47z"
+      }
+    }), _vm._v(" "), _c('g', [_c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M163.193,464.896c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S172.509,464.896,163.193,464.896z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M314.745,470.016c-9.316,0-16.896-7.58-16.896-16.896s7.58-16.896,16.896-16.896\n\t\t\ts16.896,7.58,16.896,16.896S324.061,470.016,314.745,470.016z"
+      }
+    })]), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#916F47"
+      },
+      attrs: {
+        "d": "M234.766,162.913c-0.552-0.157-1.073-0.45-1.492-0.907l-14.429-15.8\n\t\tc-1.363-1.492-3.747-1.37-4.951,0.252l-10.561,14.233c-0.916,1.235-0.829,2.945,0.208,4.08l18.903,20.7\n\t\tc0.565,0.62,0.866,1.436,0.839,2.274l-0.409,12.082c-0.097,2.877-3.64,4.183-5.582,2.057l-12.422-13.602\n\t\tc-1.363-1.492-3.747-1.37-4.951,0.252l-10.562,14.234c-0.916,1.235-0.829,2.945,0.208,4.08l31.022,33.967\n\t\tc0.56,0.614,0.861,1.421,0.839,2.252l-4.56,170.403c-0.048,1.807,1.403,3.298,3.21,3.298h14.69L234.766,162.913L234.766,162.913z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#F95948"
+      },
+      attrs: {
+        "d": "M250.233,442.368c-12.14,0-22.016-9.876-22.016-22.016s9.876-22.016,22.016-22.016\n\t\tc12.14,0,22.016,9.876,22.016,22.016S262.372,442.368,250.233,442.368z"
+      }
+    }), _vm._v(" "), _c('g', [_c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M177.743,450.346c-9.316,0-16.896-7.58-16.896-16.896c0-0.743,0.065-1.47,0.159-2.188\n\t\t\tc-8.284,1.078-14.709,8.165-14.709,16.738c0,9.316,7.58,16.896,16.896,16.896c8.573,0,15.659-6.425,16.737-14.709\n\t\t\tC179.213,450.281,178.486,450.346,177.743,450.346z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M329.295,455.466c-9.316,0-16.896-7.58-16.896-16.896c0-0.743,0.064-1.47,0.159-2.188\n\t\t\tc-8.284,1.078-14.709,8.165-14.709,16.738c0,9.316,7.58,16.896,16.896,16.896c8.573,0,15.659-6.425,16.737-14.709\n\t\t\tC330.765,455.401,330.038,455.466,329.295,455.466z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "apple2",
+      staticStyle: {
+        "fill": "#E03A32"
+      },
+      attrs: {
+        "d": "M264.783,427.818c-12.14,0-22.016-9.876-22.016-22.016c0-2.258,0.344-4.436,0.978-6.488\n\t\t\tc-8.983,2.776-15.528,11.155-15.528,21.038c0,12.14,9.876,22.016,22.016,22.016c9.883,0,18.262-6.545,21.038-15.529\n\t\t\tC269.219,427.474,267.041,427.818,264.783,427.818z"
+      }
+    })])])]);
   }, staticRenderFns: [] };
 module.exports.render._withStripped = true;
 if (false) {
@@ -23341,7 +24102,7 @@ if (false) {
 /* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "mobile-nav mobile"
@@ -23363,19 +24124,164 @@ module.exports = { render: function render() {
       attrs: {
         "for": "menu-open"
       }
-    }, [_c('object', {
+    }, [_c('svg', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: !_vm.navState,
+        expression: "!navState"
+      }],
+      staticClass: "setting",
+      staticStyle: {
+        "enable-background": "new 0 0 512 512"
+      },
       attrs: {
-        "data": _vm.menuIcon,
-        "type": "image/svg+xml",
-        "id": "setting"
+        "version": "1.1",
+        "xmlns": "http://www.w3.org/2000/svg",
+        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+        "x": "0px",
+        "y": "0px",
+        "viewBox": "0 0 512 512",
+        "xml:space": "preserve"
       }
-    }), _vm._v(" "), _c('span', {
+    }, [_c('path', {
+      staticClass: "settingrun",
+      staticStyle: {
+        "fill": "#ED718B"
+      },
+      attrs: {
+        "d": "M486.496,208.726h-35.188c-5.904,0-11.073-3.875-12.826-9.514\n      c-3.471-11.16-7.938-21.88-13.297-32.058c-2.754-5.232-1.847-11.636,2.334-15.816l24.894-24.894c9.96-9.96,9.96-26.109,0-36.069\n      l-30.788-30.788c-9.96-9.96-26.108-9.96-36.069,0l-24.894,24.894c-4.181,4.181-10.584,5.088-15.816,2.334\n      c-10.179-5.358-20.898-9.826-32.058-13.297c-5.638-1.753-9.513-6.922-9.513-12.826V25.506c0-14.086-11.419-25.505-25.505-25.505\n      h-43.541c-14.086,0-25.504,11.419-25.504,25.504v35.187c0,5.904-3.875,11.073-9.513,12.826c-11.16,3.471-21.88,7.938-32.058,13.297\n      c-5.232,2.754-11.635,1.847-15.816-2.334l-24.894-24.894c-9.96-9.96-26.108-9.96-36.069,0L59.586,90.376\n      c-9.96,9.96-9.96,26.109,0,36.069l24.894,24.894c4.181,4.181,5.088,10.584,2.334,15.816c-5.358,10.179-9.826,20.898-13.297,32.058\n      c-1.753,5.638-6.922,9.513-12.826,9.513H25.504C11.419,208.726,0,220.145,0,234.23v43.541c0,14.086,11.419,25.504,25.504,25.504\n      h35.187c5.904,0,11.073,3.875,12.826,9.513c3.471,11.16,7.938,21.88,13.297,32.058c2.754,5.232,1.847,11.635-2.334,15.816\n      l-24.894,24.894c-9.96,9.96-9.96,26.109,0,36.069l30.788,30.788c9.96,9.96,26.108,9.96,36.069,0l24.894-24.894\n      c4.181-4.181,10.584-5.088,15.816-2.334c10.179,5.358,20.898,9.826,32.058,13.297c5.638,1.753,9.513,6.922,9.513,12.826v35.187\n      c0,14.086,11.419,25.504,25.504,25.504h43.541c14.086,0,25.504-11.419,25.504-25.504v-35.187c0-5.904,3.875-11.073,9.513-12.826\n      c11.16-3.471,21.879-7.938,32.058-13.297c5.232-2.754,11.635-1.847,15.816,2.334l24.894,24.894c9.96,9.96,26.108,9.96,36.069,0\n      l30.788-30.788c9.96-9.96,9.96-26.109,0-36.069l-24.894-24.894c-4.181-4.181-5.088-10.584-2.334-15.816\n      c5.358-10.179,9.826-20.899,13.297-32.058c1.753-5.638,6.922-9.514,12.826-9.514h35.188c14.086,0,25.504-11.419,25.504-25.504\n      v-43.541C512,220.145,500.581,208.726,486.496,208.726z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticClass: "settingrun",
+      staticStyle: {
+        "opacity": "0.1",
+        "enable-background": "new"
+      },
+      attrs: {
+        "d": "M151.337,84.481l-24.894-24.894c-7.58-7.58-18.741-9.384-28.034-5.428\n      c2.918,1.243,5.654,3.047,8.034,5.428l31.35,31.783c4.181,4.181,10.584,5.088,15.816,2.334c1.431-0.753,2.875-1.484,4.327-2.202\n      c-0.032-0.031,5.522-2.86,8.196-4.203l0,0C161.108,89.438,155.249,88.394,151.337,84.481z M153.609,418.297\n      c-5.232-2.754-11.636-1.847-15.816,2.334l-31.35,31.783c-2.38,2.38-5.116,4.185-8.034,5.428c0.031-0.013,0.073,0.01,0.119,0.052\n      c9.269,3.891,20.368,2.068,27.915-5.479l24.894-24.894c3.912-3.913,9.771-4.957,14.795-2.818l0,0\n      c-2.675-1.343-8.228-4.172-8.196-4.203C156.484,419.781,155.04,419.05,153.609,418.297z M338.53,418.789\n      c-10.179,5.358-34.582,16.223-45.742,19.693c-5.638,1.753-9.513,6.922-9.513,12.826v35.187c0,14.086-11.419,25.504-25.504,25.504h20\n      c14.086,0,25.504-11.419,25.504-25.504v-35.187c0-5.904,3.875-11.073,9.513-12.826c11.16-3.471,21.879-7.938,32.058-13.297\n      c5.232-2.754,11.635-1.847,15.816,2.334C348.307,414.659,343.704,416.065,338.53,418.789z M486.496,208.726h-20\n      c14.086,0,25.504,11.419,25.504,25.504v43.541c0,14.086-11.419,25.504-25.504,25.504h20c14.086,0,25.504-11.419,25.504-25.504\n      V234.23C512,220.145,500.581,208.726,486.496,208.726z M344.846,86.815c-10.179-5.358-20.898-9.826-32.058-13.297\n      c-5.638-1.753-9.513-6.922-9.513-12.826V25.506c0-14.086-11.419-25.505-25.505-25.505h-20c14.086,0,25.504,11.419,25.504,25.504\n      v35.187c0,5.904,3.875,11.073,9.513,12.826c11.16,3.471,35.563,14.335,45.742,19.693c5.174,2.724,9.777,4.131,22.132-8.731\n      C356.481,88.662,350.078,89.569,344.846,86.815z M427.519,360.664c-4.181-4.181-5.088-10.584-2.334-15.816\n      c5.358-10.179,9.826-20.899,13.297-32.058c1.75-5.627,6.901-9.496,12.79-9.512c0.007,0,0.013-0.002,0.02-0.002\n      c-6.661,0.003-13.323,0.001-19.984,0.001c-5.904,0-11.073,3.875-12.826,9.514c-3.471,11.16-7.938,21.88-13.297,32.058\n      c-2.754,5.232-1.847,11.636,2.334,15.816l24.894,24.894c9.96,9.96,9.96,26.109,0,36.069l-30.788,30.788\n      c-2.38,2.38-5.116,4.185-8.034,5.428l0.001,0.001c9.293,3.956,20.453,2.151,28.033-5.428l30.788-30.788\n      c9.96-9.96,9.96-26.109,0-36.069L427.519,360.664z M432.413,90.376c9.96,9.96,9.96,26.109,0,36.069l-24.894,24.894\n      c-4.181,4.181-5.088,10.584-2.334,15.816c5.358,10.179,9.826,20.899,13.297,32.058c1.753,5.638,6.922,9.514,12.826,9.514\n      c6.177,0,12.354,0.019,18.53-0.006c0.021-0.026,0.039-0.051,0.06-0.077c-5.304-0.562-9.805-4.247-11.417-9.43\n      c-3.471-11.16-7.938-21.88-13.297-32.058c-2.754-5.232-1.847-11.636,2.334-15.816l24.894-24.894c9.96-9.96,9.96-26.109,0-36.069\n      l-30.788-30.788c-7.595-7.595-18.785-9.391-28.089-5.404c3.032,1.203,5.783,3.098,8.089,5.404L432.413,90.376z"
+      }
+    }), _vm._v(" "), _c('circle', {
+      staticStyle: {
+        "opacity": "0.1",
+        "enable-background": "new"
+      },
+      attrs: {
+        "cx": "267.58",
+        "cy": "267.581",
+        "r": "115.86"
+      }
+    }), _vm._v(" "), _c('circle', {
+      staticStyle: {
+        "fill": "#FFFFFF"
+      },
+      attrs: {
+        "cx": "256",
+        "cy": "256",
+        "r": "115.86"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "opacity": "0.1",
+        "enable-background": "new"
+      },
+      attrs: {
+        "d": "M331.46,168.086c17.417,20.273,27.947,46.636,27.947,75.46\n      c0,63.988-51.873,115.861-115.861,115.861c-28.824,0-55.187-10.529-75.46-27.947c21.249,24.733,52.75,40.401,87.915,40.401\n      c63.988,0,115.861-51.873,115.861-115.861C371.861,220.837,356.193,189.335,331.46,168.086z"
+      }
+    }), _vm._v(" "), _c('path', {
+      staticStyle: {
+        "fill": "#ED718B"
+      },
+      attrs: {
+        "d": "M309.888,268.11l-73.674,36.837c-10.092,5.046-21.967-2.293-21.967-13.577v-73.674\n      c0-11.284,11.875-18.623,21.967-13.576l73.674,36.837C321.076,246.551,321.076,262.518,309.888,268.11z"
+      }
+    })]), _vm._v(" "), _c('svg', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: _vm.navState,
+        expression: "navState"
+      }],
+      staticClass: "setting",
+      staticStyle: {
+        "enable-background": "new 0 0 512 512"
+      },
+      attrs: {
+        "version": "1.1",
+        "xmlns": "http://www.w3.org/2000/svg",
+        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+        "x": "0px",
+        "y": "0px",
+        "viewBox": "0 0 512 512",
+        "xml:space": "preserve"
+      }
+    }, [_c('defs', [_c('clipPath', {
+      attrs: {
+        "id": "_clipPath_YbkVj9QcnXPgG2sBjm8LHbbrEuvDUI5Q"
+      }
+    }, [_c('rect', {
+      attrs: {
+        "width": "512",
+        "height": "512"
+      }
+    })])]), _c('g', {
+      attrs: {
+        "clip-path": "url(#_clipPath_YbkVj9QcnXPgG2sBjm8LHbbrEuvDUI5Q)"
+      }
+    }, [_c('path', {
+      staticClass: "settingrun",
+      attrs: {
+        "d": " M 486.496 208.726 L 451.308 208.726 C 445.404 208.726 440.235 204.851 438.482 199.212 C 435.011 188.052 430.544 177.332 425.185 167.154 C 422.431 161.922 423.338 155.518 427.519 151.338 L 452.413 126.444 C 462.373 116.484 462.373 100.335 452.413 90.375 L 421.625 59.587 C 411.665 49.627 395.517 49.627 385.556 59.587 L 360.662 84.481 C 356.481 88.662 350.078 89.569 344.846 86.815 C 334.667 81.457 323.948 76.989 312.788 73.518 C 307.15 71.765 303.275 66.596 303.275 60.692 L 303.275 25.506 C 303.275 11.42 291.856 0.001 277.77 0.001 L 234.229 0.001 C 220.143 0.001 208.725 11.42 208.725 25.505 L 208.725 60.692 C 208.725 66.596 204.85 71.765 199.212 73.518 C 188.052 76.989 177.332 81.456 167.154 86.815 C 161.922 89.569 155.519 88.662 151.338 84.481 L 126.444 59.587 C 116.484 49.627 100.336 49.627 90.375 59.587 L 59.586 90.376 C 49.626 100.336 49.626 116.485 59.586 126.445 L 84.48 151.339 C 88.661 155.52 89.568 161.923 86.814 167.155 C 81.456 177.334 76.988 188.053 73.517 199.213 C 71.764 204.851 66.595 208.726 60.691 208.726 L 25.504 208.726 C 11.419 208.726 0 220.145 0 234.23 L 0 277.771 C 0 291.857 11.419 303.275 25.504 303.275 L 60.691 303.275 C 66.595 303.275 71.764 307.15 73.517 312.788 C 76.988 323.948 81.455 334.668 86.814 344.846 C 89.568 350.078 88.661 356.481 84.48 360.662 L 59.586 385.556 C 49.626 395.516 49.626 411.665 59.586 421.625 L 90.374 452.413 C 100.334 462.373 116.482 462.373 126.443 452.413 L 151.337 427.519 C 155.518 423.338 161.921 422.431 167.153 425.185 C 177.332 430.543 188.051 435.011 199.211 438.482 C 204.849 440.235 208.724 445.404 208.724 451.308 L 208.724 486.495 C 208.724 500.581 220.143 511.999 234.228 511.999 L 277.769 511.999 C 291.855 511.999 303.273 500.58 303.273 486.495 L 303.273 451.308 C 303.273 445.404 307.148 440.235 312.786 438.482 C 323.946 435.011 334.665 430.544 344.844 425.185 C 350.076 422.431 356.479 423.338 360.66 427.519 L 385.554 452.413 C 395.514 462.373 411.662 462.373 421.623 452.413 L 452.411 421.625 C 462.371 411.665 462.371 395.516 452.411 385.556 L 427.517 360.662 C 423.336 356.481 422.429 350.078 425.183 344.846 C 430.541 334.667 435.009 323.947 438.48 312.788 C 440.233 307.15 445.402 303.274 451.306 303.274 L 486.494 303.274 C 500.58 303.274 511.998 291.855 511.998 277.77 L 511.998 234.229 C 512 220.145 500.581 208.726 486.496 208.726 Z ",
+        "fill": "rgb(237,113,139)"
+      }
+    }), _c('g', {
+      attrs: {
+        "opacity": "0.1"
+      }
+    }, [_c('path', {
+      staticClass: "settingrun",
+      attrs: {
+        "d": " M 151.337 84.481 L 126.443 59.587 C 118.863 52.007 107.702 50.203 98.409 54.159 C 101.327 55.402 104.063 57.206 106.443 59.587 L 137.793 91.37 C 141.974 95.551 148.377 96.458 153.609 93.704 C 155.04 92.951 156.484 92.22 157.936 91.502 C 157.904 91.471 163.458 88.642 166.132 87.299 L 166.132 87.299 C 161.108 89.438 155.249 88.394 151.337 84.481 Z  M 153.609 418.297 C 148.377 415.543 141.973 416.45 137.793 420.631 L 106.443 452.414 C 104.063 454.794 101.327 456.599 98.409 457.842 C 98.44 457.829 98.482 457.852 98.528 457.894 C 107.797 461.785 118.896 459.962 126.443 452.415 L 151.337 427.521 C 155.249 423.608 161.108 422.564 166.132 424.703 L 166.132 424.703 C 163.457 423.36 157.904 420.531 157.936 420.5 C 156.484 419.781 155.04 419.05 153.609 418.297 Z  M 338.53 418.789 C 328.351 424.147 303.948 435.012 292.788 438.482 C 287.15 440.235 283.275 445.404 283.275 451.308 L 283.275 486.495 C 283.275 500.581 271.856 511.999 257.771 511.999 L 277.771 511.999 C 291.857 511.999 303.275 500.58 303.275 486.495 L 303.275 451.308 C 303.275 445.404 307.15 440.235 312.788 438.482 C 323.948 435.011 334.667 430.544 344.846 425.185 C 350.078 422.431 356.481 423.338 360.662 427.519 C 348.307 414.659 343.704 416.065 338.53 418.789 Z  M 486.496 208.726 L 466.496 208.726 C 480.582 208.726 492 220.145 492 234.23 L 492 277.771 C 492 291.857 480.581 303.275 466.496 303.275 L 486.496 303.275 C 500.582 303.275 512 291.856 512 277.771 L 512 234.23 C 512 220.145 500.581 208.726 486.496 208.726 Z  M 344.846 86.815 C 334.667 81.457 323.948 76.989 312.788 73.518 C 307.15 71.765 303.275 66.596 303.275 60.692 L 303.275 25.506 C 303.275 11.42 291.856 0.001 277.77 0.001 L 257.77 0.001 C 271.856 0.001 283.274 11.42 283.274 25.505 L 283.274 60.692 C 283.274 66.596 287.149 71.765 292.787 73.518 C 303.947 76.989 328.35 87.853 338.529 93.211 C 343.703 95.935 348.306 97.342 360.661 84.48 C 356.481 88.662 350.078 89.569 344.846 86.815 Z  M 427.519 360.664 C 423.338 356.483 422.431 350.08 425.185 344.848 C 430.543 334.669 435.011 323.949 438.482 312.79 C 440.232 307.163 445.383 303.294 451.272 303.278 C 451.279 303.278 451.285 303.276 451.292 303.276 C 444.631 303.279 437.969 303.277 431.308 303.277 C 425.404 303.277 420.235 307.152 418.482 312.791 C 415.011 323.951 410.544 334.671 405.185 344.849 C 402.431 350.081 403.338 356.485 407.519 360.665 L 432.413 385.559 C 442.373 395.519 442.373 411.668 432.413 421.628 L 401.625 452.416 C 399.245 454.796 396.509 456.601 393.591 457.844 L 393.592 457.845 C 402.885 461.801 414.045 459.996 421.625 452.417 L 452.413 421.629 C 462.373 411.669 462.373 395.52 452.413 385.56 L 427.519 360.664 L 427.519 360.664 Z  M 432.413 90.376 C 442.373 100.336 442.373 116.485 432.413 126.445 L 407.519 151.339 C 403.338 155.52 402.431 161.923 405.185 167.155 C 410.543 177.334 415.011 188.054 418.482 199.213 C 420.235 204.851 425.404 208.727 431.308 208.727 C 437.485 208.727 443.662 208.746 449.838 208.721 C 449.859 208.695 449.877 208.67 449.898 208.644 C 444.594 208.082 440.093 204.397 438.481 199.214 C 435.01 188.054 430.543 177.334 425.184 167.156 C 422.43 161.924 423.337 155.52 427.518 151.34 L 452.412 126.446 C 462.372 116.486 462.372 100.337 452.412 90.377 L 421.624 59.589 C 414.029 51.994 402.839 50.198 393.535 54.185 C 396.567 55.388 399.318 57.283 401.624 59.589 L 432.413 90.376 L 432.413 90.376 Z ",
+        "fill": "rgb(0,0,0)"
+      }
+    })]), _c('g', {
+      attrs: {
+        "opacity": "0.1"
+      }
+    }, [_c('path', {
+      attrs: {
+        "d": " M 150.403 267.198 C 150.403 203.253 202.318 151.338 266.263 151.338 C 330.208 151.338 382.123 203.253 382.123 267.198 C 382.123 331.143 330.208 383.058 266.263 383.058 C 202.318 383.058 150.403 331.143 150.403 267.198 Z ",
+        "fill": "rgb(0,0,0)"
+      }
+    })]), _c('path', {
+      attrs: {
+        "d": " M 140.14 256 C 140.14 192.055 192.055 140.14 256 140.14 C 319.945 140.14 371.86 192.055 371.86 256 C 371.86 319.945 319.945 371.86 256 371.86 C 192.055 371.86 140.14 319.945 140.14 256 Z ",
+        "fill": "rgb(255,255,255)"
+      }
+    }), _c('image', {
+      attrs: {
+        "xlink:href": "data:image/png;base64,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",
+        "x": "190.539",
+        "y": "194.688",
+        "width": "130.921",
+        "height": "122.625"
+      }
+    }), _c('g', {
+      attrs: {
+        "opacity": "0.1"
+      }
+    }, [_c('path', {
+      attrs: {
+        "d": " M 331.46 168.086 C 348.877 188.359 359.407 214.722 359.407 243.546 C 359.407 307.534 307.534 359.407 243.546 359.407 C 214.722 359.407 188.359 348.878 168.086 331.46 C 189.335 356.193 220.836 371.861 256.001 371.861 C 319.989 371.861 371.862 319.988 371.862 256 C 371.861 220.837 356.193 189.335 331.46 168.086 Z ",
+        "fill": "rgb(0,0,0)"
+      }
+    })])])]), _vm._v(" "), _c('span', {
       staticClass: "hamburger hamburger-1"
     })]), _vm._v(" "), _vm._l(this.list, function (item) {
       return _c('a', {
         staticClass: "menu-item",
         on: {
-          "click": function click($event) {
+          "click": function ($event) {
             _vm.goAnchor(item.url);
           }
         }
@@ -23477,7 +24383,7 @@ if (false) {
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "map",
@@ -23523,7 +24429,7 @@ if (false) {
 /* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "container slide"
@@ -23571,7 +24477,7 @@ if (false) {
 /* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       staticClass: "cloud"
@@ -23595,7 +24501,7 @@ if (false) {
 /* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       directives: [{
@@ -23618,7 +24524,7 @@ module.exports = { render: function render() {
           "href": "javascript:void(0)"
         },
         on: {
-          "click": function click($event) {
+          "click": function ($event) {
             _vm.goAnchor(item.url);
           }
         }
@@ -23662,7 +24568,7 @@ if (false) {
 /* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { render: function render() {
+module.exports = { render: function () {
     var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;
     return _c('div', {
       class: _vm.slideClass
@@ -24424,12 +25330,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var CONFIG = {
 	XSRF_TOKEN: decodeURIComponent(document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, "$1")),
-	PHOTO_URL: 'http://127.0.0.1:8080/',
-	API_URL: 'http://127.0.0.1:8080/',
-	TAB_API: 'http://127.0.0.1:8080/' + 'maps',
-	SLIDER_API: 'http://127.0.0.1:8080/' + 'sliders',
-	SIDEBAR_API: 'http://127.0.0.1:8080/' + 'sidebars',
-	DETAIL_API: 'http://127.0.0.1:8080/' + 'details'
+	PHOTO_URL: 'http://rubyherbs.ddns.net/',
+	API_URL: 'http://rubyherbs.ddns.net/',
+	TAB_API: 'http://rubyherbs.ddns.net/' + 'maps',
+	SLIDER_API: 'http://rubyherbs.ddns.net/' + 'sliders',
+	SIDEBAR_API: 'http://rubyherbs.ddns.net/' + 'sidebars',
+	DETAIL_API: 'http://rubyherbs.ddns.net/' + 'details'
 };
 
 exports.CONFIG = CONFIG;

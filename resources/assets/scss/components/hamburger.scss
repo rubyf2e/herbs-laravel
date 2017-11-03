@@ -11,6 +11,15 @@ $opening-angle:$pi - .2;
 
   width:0;
   left:6%;
+
+  .settingClose{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+
   .menu{
     @extend %goo;
     $width:300px;
@@ -75,7 +84,7 @@ $opening-angle:$pi - .2;
 
 .menu-item{
   img{
-    width: 100%;
+    width: 0%;
   }
 
   @for $i from 1 through $menu-items{
@@ -115,6 +124,10 @@ $opening-angle:$pi - .2;
 }
 
 .menu-open:checked~.menu-item{
+  img{
+    width: 100%;
+  }
+  
   box-shadow: 1px 2px 4px rgba(20%,20%,40%,0.8);
   background:$fg;
   transition-timing-function:cubic-bezier(0.935, 0.000, 0.340, 1.330);

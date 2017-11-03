@@ -54,7 +54,7 @@ export default {
     setTimeout(() => {
       self.words();
     }, 100)
-  }, 200)
+  }, 1000)
 },
 computed: {
   swiper() {
