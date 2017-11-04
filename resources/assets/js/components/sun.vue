@@ -24,8 +24,6 @@ export default {
 	watch: {
 	},
 	mounted() {
-		setInterval(this.run, 50);
-		setInterval(this.move, 20);
 	},
 
 	methods: {

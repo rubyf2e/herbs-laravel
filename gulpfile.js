@@ -20,6 +20,7 @@ gulp.task('default', function () {
 		'public/css/*.css',
 		'public/js/**/*.js',
 		'public/js/*.js',
+		'public/images/svg/*',
 		'resources/views/*.php',
 		], {
 			proxy: proxy

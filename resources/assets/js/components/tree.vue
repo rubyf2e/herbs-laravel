@@ -10,7 +10,7 @@
 				<stop offset="0" stop-color="#FF977B">
 					<animate id="rainbow1Animate" calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1" />
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1" />
 				</stop>
 			</linearGradient>
@@ -21,7 +21,7 @@
 				<stop offset="0" stop-color="#F95948">
 					<animate id="rainbow2Animate" calcMode="linear" dur="0.7s" attributeName="offset" fill="freeze" from="0" to="1"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="0.7s" attributeName="offset" fill="freeze" from="0" to="1" />
 				</stop>
 
@@ -33,7 +33,7 @@
 				<stop offset="0" stop-color="#FF977B">
 					<animate id="rainbow3Animate" calcMode="linear"  dur="1s"  attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow1Animate.end"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear"  dur="1s"  attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow1Animate.end"/>
 				</stop>
 
@@ -45,7 +45,7 @@
 				<stop offset="0" stop-color="#AEEF66">
 					<animate id="rainbow4Animate" calcMode="linear" dur="0.7s" attributeName="offset" fill="freeze" from="0" to="1"  begin="rainbow6Animate.end"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="0.7s" attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow6Animate.end"/>
 				</stop>
 
@@ -57,7 +57,7 @@
 				<stop offset="0" stop-color="#8EC155">
 					<animate id="rainbow5Animate" calcMode="linear" dur="0.5s" attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow6Animate.end"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="0.5s" attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow6Animate.end"/>
 				</stop>
 
@@ -69,7 +69,7 @@
 				<stop offset="0" stop-color="#AEEF66">
 					<animate  id="rainbow6Animate" calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1"  value="0, 1, 1.3"/>
 				</stop>
 
@@ -82,7 +82,7 @@
 				<stop offset="0" stop-color="#FFF873">
 					<animate id="rainbow7Animate" calcMode="linear" dur="0.85s" attributeName="offset" fill="freeze" from="0" to="1" />
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="0.85s" attributeName="offset" fill="freeze" from="0" to="1" />
 				</stop>
 
@@ -95,7 +95,7 @@
 				<stop offset="0" stop-color="#FFF873">
 					<animate  id="rainbow8Animate" calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow7Animate.end"/>
 				</stop>
-				<stop offset="0" stop-color="transparent">
+				<stop offset="0" stop-color="#FFF">
 					<animate calcMode="linear" dur="1s" attributeName="offset" fill="freeze" from="0" to="1" begin="rainbow7Animate.end"/>
 				</stop>
 

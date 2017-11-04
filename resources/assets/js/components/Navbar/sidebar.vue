@@ -53,12 +53,24 @@ methods: {
   });
  },
  handleScroll() {
-  this.listUpdate();
-  this.now = document.getElementById('app').scrollTop;
+  if($(window).width() > 768)
+  {
+   this.listUpdate();
+   this.now = document.getElementById('app').scrollTop; 
+ }
 },
 listUpdate(){
- for (var i = 0; i < this.list.length; i++) {
-  this.list[i].distance = this.getElementTop(document.getElementById(this.list[i].url));
+
+  var num              = this.list.length-1;
+  var endDistance      = this.list[num].distance;
+  var endGetElementTop = this.getElementTop(document.getElementById(this.list[num].url));
+
+  if(endDistance !== endGetElementTop)
+  {
+   for (var i = 0; i < this.list.length; i++) {
+    this.list[i].distance = this.getElementTop(document.getElementById(this.list[i].url));
+  }
+
 }
 },
 goAnchor(target){
