@@ -5,47 +5,47 @@
   font-family: 'Noto Sans TC';
   font-style: normal;
   font-weight: 100;
-  src: url(NotoSansTC-Thin.woff2) format('woff2'),
-       url(NotoSansTC-Thin.woff) format('woff'),
-       url(NotoSansTC-Thin.otf) format('opentype');
+  src: url(../fonts/earlyaccess/NotoSansTC-Thin.woff2) format('woff2'),
+       url(../fonts/earlyaccess/NotoSansTC-Thin.woff) format('woff'),
+       url(../fonts/earlyaccess/NotoSansTC-Thin.otf) format('opentype');
 }
 @font-face {
   font-family: 'Noto Sans TC';
   font-style: normal;
   font-weight: 300;
-  src: url(NotoSansTC-Light.woff2) format('woff2'),
-       url(NotoSansTC-Light.woff) format('woff'),
-       url(NotoSansTC-Light.otf) format('opentype');
+  src: url(../fonts/earlyaccess/NotoSansTC-Light.woff2) format('woff2'),
+       url(../fonts/earlyaccess/NotoSansTC-Light.woff) format('woff'),
+       url(../fonts/earlyaccess/NotoSansTC-Light.otf) format('opentype');
 }
 @font-face {
    font-family: 'Noto Sans TC';
    font-style: normal;
    font-weight: 400;
-   src: url(NotoSansTC-Regular.woff2) format('woff2'),
-        url(NotoSansTC-Regular.woff) format('woff'),
-        url(NotoSansTC-Regular.otf) format('opentype');
+   src: url(../fonts/earlyaccess/NotoSansTC-Regular.woff2) format('woff2'),
+        url(../fonts/earlyaccess/NotoSansTC-Regular.woff) format('woff'),
+        url(../fonts/earlyaccess/NotoSansTC-Regular.otf) format('opentype');
  }
 @font-face {
    font-family: 'Noto Sans TC';
    font-style: normal;
    font-weight: 500;
-   src: url(NotoSansTC-Medium.woff2) format('woff2'),
-        url(NotoSansTC-Medium.woff) format('woff'),
-        url(NotoSansTC-Medium.otf) format('opentype');
+   src: url(../fonts/earlyaccess/NotoSansTC-Medium.woff2) format('woff2'),
+        url(../fonts/earlyaccess/NotoSansTC-Medium.woff) format('woff'),
+        url(../fonts/earlyaccess/NotoSansTC-Medium.otf) format('opentype');
  }
 @font-face {
    font-family: 'Noto Sans TC';
    font-style: normal;
    font-weight: 700;
-   src: url(NotoSansTC-Bold.woff2) format('woff2'),
-        url(NotoSansTC-Bold.woff) format('woff'),
-        url(NotoSansTC-Bold.otf) format('opentype');
+   src: url(../fonts/earlyaccess/NotoSansTC-Bold.woff2) format('woff2'),
+        url(../fonts/earlyaccess/NotoSansTC-Bold.woff) format('woff'),
+        url(../fonts/earlyaccess/NotoSansTC-Bold.otf) format('opentype');
  }
 @font-face {
    font-family: 'Noto Sans TC';
    font-style: normal;
    font-weight: 900;
-   src: url(NotoSansTC-Black.woff2) format('woff2'),
-        url(NotoSansTC-Black.woff) format('woff'),
-        url(NotoSansTC-Black.otf) format('opentype');
+   src: url(../fonts/earlyaccess/NotoSansTC-Black.woff2) format('woff2'),
+        url(../fonts/earlyaccess/NotoSansTC-Black.woff) format('woff'),
+        url(../fonts/earlyaccess/NotoSansTC-Black.otf) format('opentype');
  }

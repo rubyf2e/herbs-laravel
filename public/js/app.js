@@ -25190,7 +25190,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var CONFIG = {
 	XSRF_TOKEN: decodeURIComponent(document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*\=\s*([^;]*).*$)|^.*$/, "$1")),
-	PHOTO_URL: 'http://rubyherbs.ddns.net/api/',
+	PHOTO_URL: 'http://rubyherbs.ddns.net/',
 	API_URL: 'http://rubyherbs.ddns.net/api/',
 	TAB_API: 'http://rubyherbs.ddns.net/api/' + 'maps',
 	SLIDER_API: 'http://rubyherbs.ddns.net/api/' + 'sliders',
