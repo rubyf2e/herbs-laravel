@@ -3,11 +3,12 @@ let webpack           = require('webpack');
 let autoprefixer      = require('autoprefixer');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let isProduction      = (process.env.NODE_ENV === 'production');
+process.noDeprecation = true
 
 module.exports = {
     entry: {
         app: [
-         'babel-polyfill',
+        'babel-polyfill',
         './resources/assets/js/main.js',
         './resources/assets/scss/main.scss'
         ],
@@ -18,6 +19,7 @@ module.exports = {
         filename: 'js/[name].js',
         publicPath: './public/'
     },
+    devtool: 'source-map',
     module: {
         rules: [
         {
@@ -50,7 +52,7 @@ module.exports = {
         use: {
             loader: 'babel-loader',
             query: {
-                presets: ['es2015']
+                presets: ['es2015', 'vue']
             }
         }
     },
@@ -70,24 +72,29 @@ module.exports = {
 },
 resolve: {
     alias: {
-        vue: 'vue/dist/vue.js'
+        vue: 'vue/dist/vue.min.js'
     }
 },
 
 plugins: [
 new webpack.ProvidePlugin({
-    Promise: 'es6-promise',
+    Promise: 'es6-promise-promise',
 }),
 new webpack.ProvidePlugin({
-   $:"jquery",
+ $:"jquery",
 
-   jQuery:"jquery",
+ jQuery:"jquery",
 
-   "window.jQuery":"jquery"
+ "window.jQuery":"jquery"
 
 }),
+new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: '"production"'
+}
+}),
 new webpack.optimize.CommonsChunkPlugin({
-   names: ['vendor']
+ names: ['vendor']
 }),
 new ExtractTextPlugin({
     filename: "css/style.css",

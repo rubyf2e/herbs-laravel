@@ -279,9 +279,8 @@ export default {
 				self.runStyle = 'scale(0)';
 				self.runTarget('.apple');
 				setTimeout(function(){
-					setInterval(self.bigger, 30)
-				}, 3000);
-
+					setInterval(self.bigger, 35)
+				}, 1000);
 			}, 100)
 
 
