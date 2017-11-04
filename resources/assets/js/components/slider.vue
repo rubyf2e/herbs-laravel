@@ -24,6 +24,7 @@ export default {
     return {
       show:true,
       now:0,
+      targetG:null,
       targetSvg:null,
       target:null,
       targetPath:null,
@@ -49,19 +50,11 @@ export default {
  },
 
  watch: {
-  show: function (value) {
-    if(value === true)
-    {
-      this.getWords();  
-    }
-  },
-  now: function (value) {
-   this.show = (value <= this.getElementTop(document.getElementById('detail'))*0.5 && $(window).width() > 768) ? true :false;
- }
+ },
+ updated(){
+  this.getWords();
 },
 mounted() {
-  document.getElementById('app').addEventListener('scroll', this.handleScroll);
-  this.getWords();
 },
 computed: {
   swiper() {
@@ -75,16 +68,14 @@ methods: {
     self.target     =  document.getElementById("words").contentDocument;
     self.targetSvg  =  self.target.querySelector("svg");
     if(self.targetSvg){
+     self.targetG    =  self.target.querySelector("g");
      self.targetPath =  self.targetSvg.querySelectorAll("path");
      self.words();
      clearInterval(set);
    }
  }, 100)
  },
- handleScroll() {
-  this.now = document.getElementById('app').scrollTop;
-},
-fetchApi(){
+ fetchApi(){
   var xhr = new XMLHttpRequest()
   var self = this
   xhr.open('GET', self.$conf.SLIDER_API)
@@ -92,16 +83,6 @@ fetchApi(){
     self.list = JSON.parse(xhr.responseText)
   }
   xhr.send();
-},
-getElementTop(element){
-  var navbarheight = 0;
-  var actualTop    = element.offsetTop;
-  var current      = element.offsetParent;
-  while (current !== null){
-    actualTop += current.offsetTop;
-    current = current.offsetParent;
-  }
-  return actualTop-navbarheight*2;
 },
 getRandom(min, max){
   return Math.random() * (max - min) + min;
@@ -141,7 +122,7 @@ words(){
 
   tl.staggerTo(this.targetPath, duration, stagger_opts_to, stagger_val);
 
-  var $svg = $(this.targetSvg);
+  var $svg = $(this.targetG);
   $svg.hover(
     function() {
       tl.timeScale(0.3);

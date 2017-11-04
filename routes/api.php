@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('maps', 'MapsController@index');
+Route::get('sliders', 'SlidersController@index');
+Route::get('sidebars', 'SidebarsController@index');
+Route::get('details', 'DetailsController@index');

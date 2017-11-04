@@ -1,7 +1,8 @@
-/*字體*/
+/*sass函數*/
 @import "node_modules/mathsass/dist/math";
 
-@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+/*字體*/
+@import '../../fonts/earlyaccess/notosanstc.css';
 
 /*reset css*/
 @import '../../../node_modules/normalize.css/normalize';
