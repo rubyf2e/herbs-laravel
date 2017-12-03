@@ -11,6 +11,7 @@
         "laravel-admin-ext/api-tester": "^1.0",
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/helpers": "^1.0",
+        "laravel-admin-ext/log-viewer": "^1.0",
         "laravel-admin-ext/media-manager": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",
         "laravel/framework": "5.5.*",
