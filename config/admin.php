@@ -151,6 +151,14 @@ return [
      * Settings for extensions.
      */
     'extensions' => [
-
+     'api-tester' => [
+            'prefix' => 'api',
+        ],
+       'public' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',    // 设置文件访问url
+            'visibility' => 'public',
+        ],
     ],
 ];
