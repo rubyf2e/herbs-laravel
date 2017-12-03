@@ -7,9 +7,10 @@ use App\Sidebars;
 
 class SidebarsController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		return Sidebars::all();
+		$results = Sidebars::all();
+		return response()->json($results, 201);
 	}
 
 }

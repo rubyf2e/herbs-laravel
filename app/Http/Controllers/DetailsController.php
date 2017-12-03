@@ -15,7 +15,7 @@ class DetailsController extends Controller
 			$order->slidesrc;
 		}
 
-		return response()->json($results);
+		return response()->json($results, 201);
 	}
 
 }
