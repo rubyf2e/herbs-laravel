@@ -12,3 +12,5 @@ yarn-error.log
 .env
 
 resources/assets/js/config\.js
+
+public/
