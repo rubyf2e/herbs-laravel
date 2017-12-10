@@ -18,6 +18,8 @@ class CreateMapsTable extends Migration
            $table->string('name');
            $table->text('memo');
            $table->json('position');
+           $table->integer('lat');
+           $table->integer('lng');
            $table->timestamps();
        });
     }

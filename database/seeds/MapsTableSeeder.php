@@ -16,19 +16,24 @@ class MapsTableSeeder extends Seeder
     			'id' => 0,
     			'name' => '法國',
     			'memo' => '普羅旺斯有著很漂亮的薰衣草花海',
-    			'position' =>  array(
-    				'lat' =>  47.0720587,
-    				'lng' =>  2.00
-    			)
+                'position' =>  array(
+                    'lat' =>  47.0720587,
+                    'lng' =>  2.00
+                ),
+                'lat' =>  47.0720587,
+                'lng' =>  2.00	
     		),
     		array(
     			'id' => 1,
     			'name' => '英國',
     			'memo' => '英國盛產玫瑰，可作玫瑰花茶',
-    			'position' =>  array(
-    				'lat' => 55.3178563,
-    				'lng' => -2.8872784
-    			)
+                'position' =>  array(
+                    'lat' => 55.3178563,
+                    'lng' => -2.8872784
+                ),
+                'lat' => 55.3178563,
+                'lng' => -2.8872784
+    			
     		),
     		array(
     			'id' => 2,
@@ -37,7 +42,9 @@ class MapsTableSeeder extends Seeder
     			'position' =>  array(
     				'lat' =>  43.4035736,
     				'lng' =>  12.29
-    			)
+    			),
+                'lat' =>  43.4035736,
+                'lng' =>  12.29
     		),
     		array(
     			'id' => 3,
@@ -46,7 +53,9 @@ class MapsTableSeeder extends Seeder
     			'position' =>  array(
     				'lat' =>  39.9631876,
     				'lng' =>  -3.7843839
-    			)
+    			),
+                'lat' =>  39.9631876,
+                'lng' =>  -3.7843839
     		),
     		array(
     			'id' => 4,
@@ -55,7 +64,9 @@ class MapsTableSeeder extends Seeder
     			'position' =>  array(
     				'lat' =>  25.0336167,
     				'lng' =>  121.5356188
-    			)
+    			),
+                'lat' =>  25.0336167,
+                'lng' =>  121.5356188
     		),
     		array(
     			'id' => 5,
@@ -64,7 +75,9 @@ class MapsTableSeeder extends Seeder
     			'position' =>  array(
     				'lat' =>  30.3486579,
     				'lng' =>  -137.1655373
-    			)
+    			),
+                'lat' =>  30.3486579,
+                'lng' =>  -137.1655373
     		)
     	);
 
@@ -73,6 +86,8 @@ class MapsTableSeeder extends Seeder
     			'name' => $target[$i]['name'],
     			'memo' => $target[$i]['memo'],
     			'position' => json_encode($target[$i]['position']),
+                'lat' => $target[$i]['lat'],
+                'lng' => $target[$i]['lng'],
     		]);
     	}
     }
