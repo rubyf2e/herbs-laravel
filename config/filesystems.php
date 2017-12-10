@@ -46,7 +46,7 @@ return [
             'driver' => 'local',
             'root' =>  public_path(), 
             'visibility' => 'public',
-            'url' => env('APP_URL').($_SERVER['SERVER_PORT'] ? ':' .$_SERVER['SERVER_PORT'] : ''),
+            'url' => env('APP_URL').(env('APP_PORT') ? ':' .env('APP_PORT') : ''),
         ],
         'local' => [
             'driver' => 'local',
