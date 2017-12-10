@@ -44,8 +44,10 @@ return [
     'disks' => [
         'admin' => [ 
             'driver' => 'local',
-             'root' => storage_path('app'), 
-         ],
+            'root' =>  public_path(), 
+            'visibility' => 'public',
+            'url' => env('APP_URL').($_SERVER['SERVER_PORT'] ? ':' .$_SERVER['SERVER_PORT'] : ''),
+        ],
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
