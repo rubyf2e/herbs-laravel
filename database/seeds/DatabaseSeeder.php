@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(Admin_menuTableSeeder::class);
     	$this->call(SlidersTableSeeder::class);
     	$this->call(SidebarsTableSeeder::class);
     	$this->call(MapsTableSeeder::class);
