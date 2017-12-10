@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Maps;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -9,7 +10,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ExampleController extends Controller
+class MapsController extends Controller
 {
     use ModelForm;
 
@@ -22,8 +23,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('香草地圖');
+            $content->description('香草地圖設定');
 
             $content->body($this->grid());
         });
@@ -39,8 +40,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('香草地圖');
+            $content->description('香草地圖設定');
 
             $content->body($this->form()->edit($id));
         });
@@ -55,8 +56,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('香草地圖');
+            $content->description('香草地圖設定');
 
             $content->body($this->form());
         });
@@ -69,12 +70,18 @@ class ExampleController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(YourModel::class, function (Grid $grid) {
-
+        return Admin::grid(Maps::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->name('標題')->editable();
+            $grid->memo('內容')->editable();
+            $grid->column('position')->openMap(function () {
+
+                return [$this->profile['lat'], $this->profile['lng']];
+
+            }, 'Position');
+            $grid->order('排序')->orderable();
+
         });
     }
 
@@ -85,9 +92,15 @@ class ExampleController extends Controller
      */
     protected function form()
     {
-        return Admin::form(YourModel::class, function (Form $form) {
+        return Admin::form(Maps::class, function (Form $form) {
 
             $form->display('id', 'ID');
+
+            $form->text('name')->rules('required');
+            $form->textarea('memo')->rules('required');
+
+            $form->map('47.0720587', '2.00', '地圖位置')->useGoogleMap();
+
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
