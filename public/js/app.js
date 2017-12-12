@@ -22653,7 +22653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     fetchApi: function fetchApi() {
       var xhr = new XMLHttpRequest();
       var self = this;
-      xhr.open('POST', self.$conf.SLIDER_API, application / json);
+      xhr.open('POST', self.$conf.SLIDER_API);
       xhr.onload = function () {
         self.list = JSON.parse(xhr.responseText);
       };
