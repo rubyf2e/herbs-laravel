@@ -2,7 +2,10 @@ let path              = require('path');
 let webpack           = require('webpack');
 let autoprefixer      = require('autoprefixer');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let UglifyJsPlugin    = require('uglifyjs-webpack-plugin');
 let isProduction      = (process.env.NODE_ENV === 'production');
+
+
 process.noDeprecation = true
 
 module.exports = {
@@ -77,15 +80,16 @@ resolve: {
 },
 
 plugins: [
+new UglifyJsPlugin(),
 new webpack.ProvidePlugin({
     Promise: 'es6-promise-promise',
 }),
 new webpack.ProvidePlugin({
- $:"jquery",
+   $:"jquery",
 
- jQuery:"jquery",
+   jQuery:"jquery",
 
- "window.jQuery":"jquery"
+   "window.jQuery":"jquery"
 
 }),
 new webpack.DefinePlugin({
@@ -94,7 +98,7 @@ new webpack.DefinePlugin({
 }
 }),
 new webpack.optimize.CommonsChunkPlugin({
- names: ['vendor']
+   names: ['vendor']
 }),
 new ExtractTextPlugin({
     filename: "css/style.css",
