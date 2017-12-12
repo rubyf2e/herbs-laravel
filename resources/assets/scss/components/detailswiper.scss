@@ -87,12 +87,14 @@
 			left: 0;
 			background: url(../../images/left-arrow.svg) no-repeat;
 			background-size: cover;
+			background-position: center;
 		}
 
 		&.next{
 			right: 0;
 			background: url(../../images/right-arrow.svg) no-repeat;
 			background-size: cover;
+			background-position: center;
 		}
 	}
 
