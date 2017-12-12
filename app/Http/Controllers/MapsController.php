@@ -10,6 +10,6 @@ class MapsController extends Controller
 	public function index()
 	{
 		$results = Maps::all();
-		return response()->json($results, 201);
+		return response()->json($results, 200);
 	}
 }

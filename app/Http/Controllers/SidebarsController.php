@@ -10,7 +10,7 @@ class SidebarsController extends Controller
 	public function index(Request $request)
 	{
 		$results = Sidebars::all();
-		return response()->json($results, 201);
+		return response()->json($results, 200);
 	}
 
 }
