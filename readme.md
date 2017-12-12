@@ -24,6 +24,7 @@ google Map Api<br>
 CSS3<br>
 HTML5<br>
 CSS Transition<br>
+網頁讀取速度優化<br>
 
 
 herbs-vue https://github.com/rubyf2e/herbs-vue 是原先開發前端vue的repository,但之後更新後皆更新在此。<br>
