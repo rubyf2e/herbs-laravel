@@ -1,8 +1,5 @@
 技術使用<br>
 
-架構<br>
-MVVM
-
 後端<br>
 laravel<br>
 laravel admin<br>
