@@ -52,7 +52,7 @@ watch: {
 methods: {
   fetchApi(){
    var self = this;
-   this.$http.get(self.$conf.TAB_API).then((response) => {
+   this.$http.post(self.$conf.TAB_API).then((response) => {
     this.list           = response.data;
     this.centerPosition = JSON.parse(response.data[0].position);
 

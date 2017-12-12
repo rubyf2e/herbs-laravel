@@ -17,7 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('maps', 'MapsController@index');
-Route::get('sliders', 'SlidersController@index');
-Route::get('sidebars', 'SidebarsController@index');
-Route::get('details', 'DetailsController@index');
+Route::get('/', 'IndexController@index');
+Route::get('maps', 'IndexController@index');
+Route::get('sliders', 'IndexController@index');
+Route::get('sidebars', 'IndexController@index');
+Route::get('details', 'IndexController@index');
+
+Route::post('maps', 'MapsController@index');
+Route::post('sliders', 'SlidersController@index');
+Route::post('sidebars', 'SidebarsController@index');
+Route::post('details', 'DetailsController@index');

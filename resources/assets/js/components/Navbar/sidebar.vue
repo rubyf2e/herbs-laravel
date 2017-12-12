@@ -45,7 +45,7 @@
 methods: {
   fetchApi(){
    var self = this;
-   this.$http.get(self.$conf.SIDEBAR_API).then((response) => {
+   this.$http.post(self.$conf.SIDEBAR_API).then((response) => {
     this.list = response.data;
     this.$bus.$emit('navbar-memu', this.list);
   }, (response) => {

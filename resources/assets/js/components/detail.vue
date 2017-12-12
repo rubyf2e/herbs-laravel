@@ -43,7 +43,7 @@
    methods: {
     fetchApi(){
      var self = this;
-     this.$http.get(self.$conf.DETAIL_API).then((response) => {
+     this.$http.post(self.$conf.DETAIL_API).then((response) => {
       this.list = response.data;
     }, (response) => {
     });

@@ -78,7 +78,7 @@ methods: {
  fetchApi(){
   var xhr = new XMLHttpRequest()
   var self = this
-  xhr.open('GET', self.$conf.SLIDER_API)
+  xhr.open('POST', self.$conf.SLIDER_API, application/json)
   xhr.onload = function() {
     self.list = JSON.parse(xhr.responseText)
   }

@@ -22068,7 +22068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       var self = this;
-      this.$http.get(self.$conf.SIDEBAR_API).then(function (response) {
+      this.$http.post(self.$conf.SIDEBAR_API).then(function (response) {
         _this.list = response.data;
         _this.$bus.$emit('navbar-memu', _this.list);
       }, function (response) {});
@@ -22281,7 +22281,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       var self = this;
-      this.$http.get(self.$conf.DETAIL_API).then(function (response) {
+      this.$http.post(self.$conf.DETAIL_API).then(function (response) {
         _this2.list = response.data;
       }, function (response) {});
     },
@@ -22653,7 +22653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     fetchApi: function fetchApi() {
       var xhr = new XMLHttpRequest();
       var self = this;
-      xhr.open('GET', self.$conf.SLIDER_API);
+      xhr.open('POST', self.$conf.SLIDER_API, application / json);
       xhr.onload = function () {
         self.list = JSON.parse(xhr.responseText);
       };
@@ -22843,7 +22843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       var self = this;
-      this.$http.get(self.$conf.TAB_API).then(function (response) {
+      this.$http.post(self.$conf.TAB_API).then(function (response) {
         _this.list = response.data;
         _this.centerPosition = JSON.parse(response.data[0].position);
 
