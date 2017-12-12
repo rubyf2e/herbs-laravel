@@ -15,7 +15,7 @@ Digital ocean<br>
 vue<br>
 客製化非css框架自適應排版<br>
 Svg 圖片動畫<br>
-svg整合javascript動畫(可以將滑鼠移到太陽雲的效果)<br>
+svg整合javascript動畫<br>
 TimelineMax動畫<br>
 webpack<br>
 gulp<br>
