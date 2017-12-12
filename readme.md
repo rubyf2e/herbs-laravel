@@ -1,9 +1,9 @@
-技術使用
+技術使用<br>
 
-架構
+架構<br>
 MVVM
 
-後端
+後端<br>
 laravel<br>
 laravel admin<br>
 composer<br>
@@ -27,7 +27,7 @@ CSS Transition<br>
 網頁讀取速度優化(未完成)<br>
 
 
-製作流程
+製作流程<br>
 先刻html,再做成vue的component<br>
 然後先用json server架假api模擬RestFul API<br>
 再整到laravel裡調整webpack<br>
