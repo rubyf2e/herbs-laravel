@@ -27,5 +27,10 @@ CSS Transition<br>
 網頁讀取速度優化(未完成)<br>
 
 
+製作流程
+先刻html,再做成vue的component，然後先用json server架假api模擬RestFul API,
+再整到laravel裡調整webpack，然後製作RESTful API串接，再用laravel admin，用兩天的時間了解laravel admin快速打造後台。
+
+
 herbs-vue https://github.com/rubyf2e/herbs-vue 是原先開發前端vue的repository,但之後更新後皆更新在此。<br>
 herbs-laravel-react https://github.com/rubyf2e/herbs-laravel-react/commits/master 是將vue改用react寫法，尚未完成。<br>
