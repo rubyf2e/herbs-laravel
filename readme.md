@@ -22,6 +22,7 @@ CSS3<br>
 HTML5<br>
 CSS Transition<br>
 網頁讀取速度優化(未完成)<br>
+因為時間關係瀏覽器只有做到chrome<br>
 
 
 製作流程<br>
