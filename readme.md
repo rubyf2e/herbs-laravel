@@ -1,3 +1,9 @@
+
+後台網址
+http://rubyherbs.ddns.net/admin/
+
+訪客帳號：guest 密碼：guest
+
 技術使用<br>
 
 後端<br>
