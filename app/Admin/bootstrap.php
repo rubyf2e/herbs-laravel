@@ -23,12 +23,14 @@ use App\Admin\Extensions\Column\FloatBar;
 use App\Admin\Extensions\Column\Qrcode;
 use App\Admin\Extensions\Column\UrlWrapper;
 use App\Admin\Extensions\Form\WangEditor;
+use App\Admin\Extensions\Form\Map;
 use App\Admin\Extensions\Nav\Links;
 use Encore\Admin\Grid;
 use Encore\Admin\Form;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid\Column;
 
+Form::extend('maps', Map::class);
 Column::extend('expand', ExpandRow::class);
 Column::extend('openMap', OpenMap::class);
 Column::extend('floatBar', FloatBar::class);
