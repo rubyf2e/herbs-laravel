@@ -54,8 +54,9 @@ class Map extends Field
     {
         $this->script = <<<EOT
         function initGoogleMap(name) {
-            var lat = $('#{$this->id['lat']}');
-            var lng = $('#{$this->id['lng']}');
+            var lat      = $('#{$this->id['lat']}');
+            var lng      = $('#{$this->id['lng']}');
+            var position = $('input[name=position]');
 
             var LatLng = new google.maps.LatLng(lat.val(), lng.val());
 
@@ -81,6 +82,8 @@ class Map extends Field
             google.maps.event.addListener(marker, 'dragend', function (event) {
                 lat.val(event.latLng.lat());
                 lng.val(event.latLng.lng());
+                var positionJson = {"lat": event.latLng.lat(), "lng": event.latLng.lng()};
+                position.val(JSON.stringify(positionJson));
             });
         }
 

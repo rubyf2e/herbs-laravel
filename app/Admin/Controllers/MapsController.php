@@ -97,6 +97,7 @@ class MapsController extends Controller
             $form->text('name', '國家')->rules('required');
             $form->textarea('memo', '內容')->rules('required');
             $form->maps('lat', 'lng', '地圖位置')->useGoogleMap();
+            $form->hidden('position');
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });
