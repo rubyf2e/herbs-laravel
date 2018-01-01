@@ -1,7 +1,10 @@
-var proxy       = 'http://localhost/~ruby/herbs-laravel/public/';
-var gulp        = require('gulp');
-var imagemin    = require('gulp-imagemin');
-var browserSync = require('browser-sync').create();
+var proxy         = 'http://localhost/';
+var productionUrl = 'http://rubyherbs.ddns.net/';
+var devUrl        = 'http://localhost:3000/';
+var gulp          = require('gulp');
+var replace       = require('gulp-replace');
+var imagemin      = require('gulp-imagemin');
+var browserSync   = require('browser-sync').create();
 
 gulp.task('imagemin', function () {
 	gulp.src(['resources/assets/images/*.{png,jpg,gif,ico,svg}','resources/assets/images/**/*.{png,jpg,gif,ico,svg}'])
@@ -14,7 +17,16 @@ gulp.task('imagemin', function () {
 	.pipe(gulp.dest('public/images'));
 });
 
+gulp.task('production', function () {
+	gulp.src(['resources/assets/js/config.js'])
+	.pipe(replace(devUrl, productionUrl));
+});
+
+
 gulp.task('default', function () {
+	gulp.src(['resources/assets/js/config.js'])
+	.pipe(replace(productionUrl, devUrl));
+
 	browserSync.init([
 		'public/css/**/*.css',
 		'public/css/*.css',
@@ -22,6 +34,7 @@ gulp.task('default', function () {
 		'public/js/*.js',
 		'public/images/svg/*',
 		'resources/views/*.php',
+		'app/**/*',
 		], {
 			proxy: proxy
 		});
