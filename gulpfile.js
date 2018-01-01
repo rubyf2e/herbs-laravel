@@ -19,13 +19,15 @@ gulp.task('imagemin', function () {
 
 gulp.task('production', function () {
 	gulp.src(['resources/assets/js/config.js'])
-	.pipe(replace(devUrl, productionUrl));
+	.pipe(replace(devUrl, productionUrl))
+	.pipe(gulp.dest('resources/assets/js'));
 });
 
 
 gulp.task('default', function () {
 	gulp.src(['resources/assets/js/config.js'])
-	.pipe(replace(productionUrl, devUrl));
+	.pipe(replace(productionUrl, devUrl))
+	.pipe(gulp.dest('resources/assets/js'));
 
 	browserSync.init([
 		'public/css/**/*.css',
