@@ -9,7 +9,7 @@ class MapsController extends Controller
 {
 	public function index()
 	{
-		$results = Maps::all();
+		$results = MapsModel::all();
 		return response()->json($results, 200);
 	}
 
