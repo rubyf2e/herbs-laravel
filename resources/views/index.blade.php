@@ -68,7 +68,6 @@
 		var isFirefox = navigator.userAgent.match("Firefox"); 
 		var isIE = (/Trident\/7\./).test(navigator.userAgent);
 		var isOpera = navigator.userAgent.match("Opera"); 
-		var isSafari = navigator.userAgent.match("Safari"); 
 		if (isIE)
 		{
 			includeLinkStyle("{{asset('css/ie.css')}}") 

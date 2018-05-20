@@ -48,6 +48,8 @@
 			.carousel-3d-slide{
 				background: $background-color2;
 				z-index: 2;
+				visibility: visible;
+				opacity: 1;
 			}
 		}
 		.carousel-3d-controls{
