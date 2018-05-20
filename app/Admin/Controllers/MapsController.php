@@ -76,9 +76,10 @@ class MapsController extends Controller
             $grid->name('標題')->editable();
             $grid->memo('內容')->editable();
             $grid->column('position')->openMap(function () {
-
-                return [$this->profile['lat'], $this->profile['lng']];
-
+                return array(
+                    'position' =>  json_decode($this->position, true),
+                    'id'       =>  $this->id,
+                );
             }, 'Position');
             $grid->order('排序')->orderable();
 

@@ -10,17 +10,16 @@ class OpenMap extends AbstractDisplayer
     public function display(\Closure $callback = null, $btn = '')
     {
         $callback = $callback->bindTo($this->row);
-
-        list($latitude, $longitude) = call_user_func($callback);
-
-        $key = $this->getKey();
-
-        $name = $this->column->getName();
-
+        $target   = call_user_func($callback);
+        $id       = $target['id'];
+        $position = $target['position'];
+        $key      = $this->getKey();
+        $name     = $this->column->getName();
         Admin::script($this->script());
 
         return <<<EOT
-<button class="btn btn-xs btn-default grid-open-map" data-key="{$key}" data-lat="$latitude" data-lng="$longitude" data-toggle="modal" data-target="#grid-modal-{$name}-{$key}">
+<button class="btn btn-xs btn-default grid-open-map" data-id
+="{$id}" data-key="{$key}" data-lat="{$position['lat']}" data-lng="{$position['lng']}" data-toggle="modal" data-target="#grid-modal-{$name}-{$key}">
     <i class="fa fa-map-marker"></i> $btn
 </button>
 
@@ -33,7 +32,7 @@ class OpenMap extends AbstractDisplayer
         <h4 class="modal-title">$btn</h4>
       </div>
       <div class="modal-body">
-        <div id="grid-map-$key" style="height:450px;"></div>
+        <div id="grid-map-{$key}" style="height:450px;"></div>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -45,28 +44,59 @@ EOT;
 
     protected function script()
     {
+
+        $url = url('api/maps/updatePosition');
         return <<<EOT
 
-$('.grid-open-map').on('click', function() {
+        $('.grid-open-map').on('click', function() {
+        var target = $(this);
+        var key    = target.data('key');
+        var id     = target.data('id');
+        var lat    = target.data('lat');
+        var lng    = target.data('lng');
 
-    var key = $(this).data('key');
-    var lat = $(this).data('lat');
-    var lng = $(this).data('lng');
+         function initGoogleMap(name) {
 
-    var center = new qq.maps.LatLng(lat, lng);
+            var LatLng = new google.maps.LatLng(lat, lng);
+            var options = {
+                zoom: 4,
+                center: LatLng,
+                panControl: false,
+                zoomControl: true,
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
 
-    var container = document.getElementById("grid-map-"+key);
-    var map = new qq.maps.Map(container, {
-        center: center,
-        zoom: 13
-    });
+            var container = document.getElementById("grid-map-"+key);
+            var map       = new google.maps.Map(container, options);
 
-    var marker = new qq.maps.Marker({
-        position: center,
-        draggable: true,
-        map: map
-    });
-});
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map,
+                title: 'Drag Me!',
+                draggable: true
+                });
+
+                google.maps.event.addListener(marker, 'dragend', function (event) {
+                  var data = {
+                  "id" : id,
+                  "lat": event.latLng.lat(),
+                  "lng": event.latLng.lng()
+                  };
+                    $.ajax({
+                      url: "{$url}",
+                      method:"POST",
+                      data: data
+                      }).done(function() {
+                        target.data('lat', event.latLng.lat());
+                        target.data('lng', event.latLng.lng());
+                      });
+                    });
+                }
+
+                initGoogleMap();
+                });
+
 
 EOT;
     }

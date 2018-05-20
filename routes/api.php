@@ -24,6 +24,8 @@ Route::get('sidebars', 'IndexController@index');
 Route::get('details', 'IndexController@index');
 
 Route::post('maps', 'MapsController@index');
+Route::post('maps/updatePosition', 'MapsController@updatePosition');
 Route::post('sliders', 'SlidersController@index');
 Route::post('sidebars', 'SidebarsController@index');
 Route::post('details', 'DetailsController@index');
+
