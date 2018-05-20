@@ -45,7 +45,7 @@ EOT;
     protected function script()
     {
 
-        $url = url('api/maps/updatePosition');
+        $url = url('admin/map/updatePosition');
         return <<<EOT
 
         $('.grid-open-map').on('click', function() {

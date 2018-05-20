@@ -14,5 +14,5 @@ Route::group([
 	$router->resource('maps', MapsController::class);
 	$router->resource('sidebars', SidebarsController::class);
 	$router->get('/', 'HomeController@index');
-
+	$router->post('map/updatePosition', 'MapsController@updatePosition');
 });

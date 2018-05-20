@@ -2,13 +2,14 @@
 
 namespace App\Admin\Controllers;
 
-use App\Maps;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use App\Maps AS MapsModel;
+use Illuminate\Http\Request;
 
 class MapsController extends Controller
 {
@@ -70,7 +71,7 @@ class MapsController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Maps::class, function (Grid $grid) {
+        return Admin::grid(MapsModel::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
 
             $grid->name('標題')->editable();
@@ -93,7 +94,7 @@ class MapsController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Maps::class, function (Form $form) {
+        return Admin::form(MapsModel::class, function (Form $form) {
             $form->display('id', 'ID');
             $form->text('name', '國家')->rules('required');
             $form->textarea('memo', '內容')->rules('required');
@@ -103,4 +104,18 @@ class MapsController extends Controller
             $form->display('updated_at', 'Updated At');
         });
     }
+
+
+
+    public function updatePosition(Request $request)
+    {
+        $MapsModel = new MapsModel();
+        $id        = $request->input('id');
+        $lng       = $request->input('lng');
+        $lat       = $request->input('lat');
+        $position  = json_encode(array('lat' => $lat, 'lng' => $lng));
+        $results   = $MapsModel->updatePosition($id, $position, $lat, $lng);
+        return response()->json($results, 200);
+    }
+
 }
