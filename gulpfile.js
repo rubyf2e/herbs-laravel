@@ -1,5 +1,5 @@
 var proxy         = 'http://localhost/';
-var productionUrl = 'http://rubyherbs.ddns.net/';
+var productionUrl = 'https://rubyherbs.ddns.net/';
 var devUrl        = 'http://localhost:3000/';
 var gulp          = require('gulp');
 var replace       = require('gulp-replace');
