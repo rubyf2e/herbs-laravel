@@ -21,13 +21,3 @@ google Map Api<br>
 CSS3<br>
 HTML5<br>
 CSS Transition<br>
-網頁讀取速度優化(未完成)<br>
-因為時間關係瀏覽器只有做到chrome<br>
-
-
-製作流程<br>
-先刻html,再做成vue的component<br>
-然後先用json server架假api模擬RestFul API<br>
-再整到laravel裡調整webpack<br>
-然後製作RESTful API串接<br>
-再用laravel admin，用兩天的時間了解laravel admin快速打造後台。
