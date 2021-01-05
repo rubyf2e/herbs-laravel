@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "animate.css": "^3.5.2",
-        "axios": "^0.17",
+        "axios": "^0.21",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.0",
         "babel-eslint": "^8.0.1",
