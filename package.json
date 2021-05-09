@@ -45,7 +45,7 @@
         "laravel-elixir-browsersync-official": "^1.0.0",
         "laravel-elixir-replace": "^1.1.2",
         "laravel-mix": "^1.5.1",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.21",
         "marker-clusterer-plus": "^2.1.4",
         "mathsass": "^0.10.1",
         "node-sass": "^4.5.0",
