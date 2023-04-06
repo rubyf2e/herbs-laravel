@@ -38,7 +38,6 @@ Request URL: https://{domain}/herbs-laravel/public/api/sliders
 Request Method: POST
 Payload: 放相關的 Json
 
-
 [GET] 可用在取得 slider 全部的資料
 Request URL: https://{domain}/herbs-laravel/public/api/sliders
 Request Method: GET
